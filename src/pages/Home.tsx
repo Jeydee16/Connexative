@@ -19,19 +19,19 @@ const HERO_IMAGES = [
 ];
 
 const SPECIALTIES = [
-    { title: 'Equipment and Software', desc: 'We provide equipment leasing, re-selling, and technical support, ensuring optimal performance and cost-effectiveness.', icon: MonitorPlay, details: 'Leverage our vast network of industry-leading hardware providers. We offer customized leasing plans to ensure your teams always have the best tools, without the upfront capital expense.' },
-    { title: 'Data Management', desc: 'We offer comprehensive data management solutions, including data storage, archiving, and integration.', icon: DatabaseZap, details: 'Our data centers are equipped with state-of-the-art redundancy architectures. We ensure seamless data pipelines, helping businesses unlock deep analytics while remaining fully compliant.' },
-    { title: 'Business Process Outsourcing', desc: 'CSI offers efficient and customizable BPO solutions tailored to individual client needs.', icon: Building2, details: 'Scale your operations efficiently. From 24/7 customer support lines to back-office data entry, we recruit, train, and manage dedicated teams to lower your operational overhead.' },
-    { title: 'Software Development', desc: 'We create and implement bespoke software solutions from end-to-end to address unique business challenges.', icon: Laptop, details: 'Our agile development pods specialize in React, Node.js, and Python. We take projects from ideation to deployment, maintaining a strict focus on scalable architecture and clean code.' },
+    { title: 'Artificial Intelligence', desc: 'Agentic platforms, workflow automation, and chatbot assistants.', icon: DatabaseZap, details: 'We provide Workflow Automation, Agentic AI Platforms, Optical Character Recognition (OCR), Chatbot Assistants for customer service, and AI-powered video creation.' },
+    { title: 'Digital Service Platforms', desc: 'Scalable platforms from ride-hailing to secure payment gateways.', icon: Laptop, details: 'Our digital services encompass Ride Hailing Systems, Drop Shipping logistical support, Booking Systems for professionals, and seamless POS & Payment Gateway Systems both online and offline.' },
+    { title: 'Business Solutions', desc: 'Enterprise ERP, HRIS, ecommerce, and custom websites.', icon: Building2, details: 'Manage and scale with our Human Resource Information Systems, eCommerce and Membership Systems, Multi Level Marketing Systems, Enterprise Resource Planning (ERP LITE), and Corporate Website Creation.' },
+    { title: 'Services & Infrastructure', desc: 'Consulting, project management, and endpoint security.', icon: Server, details: 'From Consulting and Staff Augmentation to Project Management, Custom Software Development, Data Migration, Warehousing, Analytics, and Endpoint Security.' },
 ];
 
 const SERVICES = [
-    { title: 'Software Development', desc: 'Turn your ideas into reality, worry-free', icon: Code, details: 'End-to-end web and mobile app development using the latest tech stacks to ensure performance and scalability.' },
-    { title: 'Software Integration', desc: 'Introduce new solutions into your ecosystem seamlessly', icon: GitMerge, details: 'Integrate legacy systems with modern APIs. We handle complex data mappings and ensure zero downtime during cutovers.' },
-    { title: 'Data Management', desc: 'Protect your valuable data with secure and reliable storage solutions', icon: Database, details: 'Automated backups, encrypted transit, and highly available architectures for mission-critical enterprise data.' },
-    { title: 'Hardware Management', desc: 'Buy, sell, or lease hardware equipment with ease', icon: Server, details: 'Fleet tracking, lifecycle management, and secure hardware disposal for enterprise environments.' },
-    { title: 'Business Process', desc: 'Streamline your operations and boost efficiency', icon: Headphones, details: 'Omnichannel support agents and administrative assistants ready to scale with your seasonal demands.' },
-    { title: 'Technical Support', desc: 'Expert technical assistance, whenever you need it', icon: Wrench, details: 'Tier 1 to Tier 3 IT support desk, available 24/7. SLA-backed guarantees for issue resolution.' },
+    { title: 'Custom Software Development', desc: 'Build systems from scratch or enhance your existing system.', icon: Code, details: 'Let our team build or enhance your business applications tailored exactly to your specifications from end to end.' },
+    { title: 'Consulting & Staff Augmentation', desc: 'Technical consulting and contractual staff augmentation.', icon: Headphones, details: 'Business and Technical Consulting. Outsource your workforce to us and get access to top-notch professionals without the hiring hassle.' },
+    { title: 'Data Migration & Analytics', desc: 'Consolidate multiple sources for clear decision making.', icon: Database, details: 'Trouble having your data scattered? We consolidate everything into a single warehouse so insights are at your fingertips.' },
+    { title: 'Strategic Industries', desc: 'Specialized technologies for defense, energy, and telecom.', icon: GitMerge, details: 'Military and Defense Systems, Security Systems, Telecom Equipment, Alternative and Renewable Energy Technology, and Petroleum Products Systems.' },
+    { title: 'Project Management', desc: 'Complex projects handled by dedicated PMs.', icon: Wrench, details: 'Having complex projects and not enough time to hire a PM? Let our seasoned project managers steer your deliverables.' },
+    { title: 'End Point Security', desc: 'Secure your company information from outside threats.', icon: CheckCircle2, details: 'Robust security solutions securing endpoints against malicious attacks, ensuring business continuity and data integrity.' },
 ];
 
 const containerVariants = {
@@ -83,21 +83,24 @@ export default function Home() {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
                             onClick={(e) => e.stopPropagation()}
-                            className="bg-white dark:bg-slate-950 rounded-3xl p-8 md:p-12 max-w-2xl w-full shadow-2xl relative overflow-hidden"
+                            className="bg-white dark:bg-slate-950 rounded-3xl p-6 md:p-12 max-w-2xl w-full shadow-2xl relative overflow-hidden flex flex-col max-h-[90vh]"
                         >
-                            <button 
-                                onClick={() => setActiveModalItem(null)}
-                                className="absolute top-6 right-6 w-10 h-10 bg-slate-100 dark:bg-slate-800 hover:bg-red-100 hover:text-red-600 rounded-full flex items-center justify-center transition-colors z-10"
-                            >
-                                <X size={20} />
-                            </button>
-                            <div className="relative z-10">
-                                <div className="w-20 h-20 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-8 border border-red-100">
-                                    <activeModalItem.icon size={40} strokeWidth={1.5} />
+                            <div className="flex justify-between items-start mb-6 shrink-0 relative z-[100]">
+                                <div className="w-16 h-16 md:w-20 md:h-20 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center border border-red-100">
+                                    <activeModalItem.icon size={32} strokeWidth={1.5} className="md:w-10 md:h-10" />
                                 </div>
-                                <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">{activeModalItem.title}</h3>
-                                <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 border-l-4 border-red-500 pl-4 py-1 font-medium bg-slate-50 dark:bg-slate-900 pr-4">{activeModalItem.desc}</p>
-                                <div className="prose text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                                <button 
+                                    onClick={(e) => { e.stopPropagation(); setActiveModalItem(null); }}
+                                    className="w-12 h-12 bg-slate-100 dark:bg-slate-800 hover:bg-red-100 hover:text-red-600 rounded-full flex items-center justify-center transition-colors shadow-sm active:scale-95"
+                                    aria-label="Close"
+                                >
+                                    <X size={24} />
+                                </button>
+                            </div>
+                            <div className="relative z-10 overflow-y-auto pr-2 flex-grow">
+                                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">{activeModalItem.title}</h3>
+                                <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 mb-6 border-l-4 border-red-500 pl-4 py-1 font-medium bg-slate-50 dark:bg-slate-900">{activeModalItem.desc}</p>
+                                <div className="prose text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed hidden-scrollbar">
                                     <p>{activeModalItem.details}</p>
                                 </div>
                             </div>
@@ -128,15 +131,15 @@ export default function Home() {
                         transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
                         className="max-w-3xl"
                     >
-                        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white dark:bg-slate-950/10 backdrop-blur-md border border-white/20 mb-8">
+                        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 dark:bg-slate-900/10 backdrop-blur-md border border-white/20 mb-8">
                             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                             <span className="text-white text-sm font-medium tracking-wide">Next Generation Tech Partner</span>
                         </div>
                         <h1 className="text-5xl lg:text-7xl font-bold text-white leading-[1.1] mb-8">
-                            Essential IT Solutions for <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Modern Business.</span>
+                            Innovative Solutions through <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Emerging Technologies.</span>
                         </h1>
                         <p className="text-xl text-slate-300 mb-10 leading-relaxed font-light max-w-2xl">
-                            Connexative transforms ideas into powerful, maintainable software solutions designed for rapid scale. Let's modernize your infrastructure.
+                            Connexative Solutions Inc. (CSI) provides comprehensive, one-stop solutions leveraging AI, digital platforms, and strategic industry expertise to address the evolving demands of today's markets.
                         </p>
                         <div className="flex flex-wrap gap-5">
                             <Link to="/contact" className="bg-red-600 text-white px-8 py-4 rounded-full font-bold hover:bg-white dark:bg-slate-950 hover:text-red-600 transition-colors duration-300 flex items-center gap-2 shadow-xl shadow-red-600/20 group">
@@ -166,7 +169,7 @@ export default function Home() {
                                     whileInView={{ y: 0, opacity: 1 }}
                                     transition={{ delay: 0.5 }}
                                     viewport={{ once: true }}
-                                    className="absolute bottom-8 left-8 right-8 bg-white dark:bg-slate-950/90 backdrop-blur-md p-6 rounded-2xl shadow-xl flex items-center justify-between"
+                                    className="absolute bottom-8 left-8 right-8 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md p-6 rounded-2xl shadow-xl flex items-center justify-between"
                                 >
                                     <div className="flex items-center gap-4">
                                         <div className="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center text-white shrink-0 shadow-lg shadow-red-600/30">
@@ -192,10 +195,10 @@ export default function Home() {
                                 About Connexative
                             </div>
                             <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">
-                                Architecting digital solutions for tomorrow.
+                                Delivering solutions that create real value.
                             </h2>
                             <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light">
-                                Our dedicated team of developers, designers, and systems architects works closely with clients to build scalable systems, streamline processes, and deliver bleeding-edge technology that evolves.
+                                Guided by our belief in the principle "what you need is what you get", we ensure our solutions are always aligned with our clients’ real needs. Above all, we aim to make things work—efficiently, effectively, and sustainably. Our clients are more than customers—they are partners. As they grow, we grow with them.
                             </p>
                         </motion.div>
                     </div>

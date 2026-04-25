@@ -10,8 +10,7 @@ export default function Navbar() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     // Check if we are in browser
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') === 'dark' || 
-          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      return localStorage.getItem('theme') === 'dark';
     }
     return false;
   });
@@ -54,7 +53,7 @@ export default function Navbar() {
         </Link>
 
         {/* Nav Links */}
-        <div className="hidden md:flex items-center space-x-10 bg-slate-50 dark:bg-slate-900/50 backdrop-blur-lg px-8 py-2 rounded-full border border-slate-200 dark:border-slate-700/50">
+        <div className="hidden md:flex items-center space-x-10 bg-slate-50/50 dark:bg-slate-900/50 backdrop-blur-lg px-8 py-2 rounded-full border border-slate-200/50 dark:border-slate-700/50">
           <Link to="/" onClick={scrollToTop} className={`font-semibold transition-colors py-2 relative group ${location.pathname === '/' ? 'text-red-600' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
               Home
               <span className={`absolute bottom-0 left-0 h-0.5 bg-red-600 transition-all duration-300 ${location.pathname === '/' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
@@ -83,14 +82,19 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="md:hidden flex items-center gap-4">
+        <div className="md:hidden flex items-center gap-3 relative z-[100]">
           <button 
             onClick={toggleTheme}
-            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
+            className="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 active:scale-95 transition-transform"
+            aria-label="Toggle Theme"
           >
             {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
           </button>
-          <button className="text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 p-2 rounded-lg" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <button 
+            className="text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 p-3 rounded-xl active:scale-95 transition-transform" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>

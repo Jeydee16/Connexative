@@ -42,18 +42,21 @@ export default function About() {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
                             onClick={(e) => e.stopPropagation()}
-                            className="bg-white dark:bg-slate-950 rounded-3xl p-8 md:p-12 max-w-2xl w-full shadow-2xl relative overflow-hidden"
+                            className="bg-white dark:bg-slate-950 rounded-3xl p-6 md:p-12 max-w-2xl w-full shadow-2xl relative overflow-hidden flex flex-col max-h-[90vh]"
                         >
-                            <button 
-                                onClick={() => setActiveModal(null)}
-                                className="absolute top-6 right-6 w-10 h-10 bg-slate-100 dark:bg-slate-800 hover:bg-red-100 hover:text-red-600 rounded-full flex items-center justify-center transition-colors z-10"
-                            >
-                                <X size={20} />
-                            </button>
-                            <div className="relative z-10">
-                                <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">{activeModal.title}</h3>
-                                <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 border-l-4 border-red-500 pl-4 py-1 font-medium bg-slate-50 dark:bg-slate-900">{activeModal.desc || activeModal.date}</p>
-                                <div className="prose text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                            <div className="flex justify-end mb-6 shrink-0 relative z-[100]">
+                                <button 
+                                    onClick={(e) => { e.stopPropagation(); setActiveModal(null); }}
+                                    className="w-12 h-12 bg-slate-100 dark:bg-slate-800 hover:bg-red-100 hover:text-red-600 rounded-full flex items-center justify-center transition-colors shadow-sm active:scale-95"
+                                    aria-label="Close"
+                                >
+                                    <X size={24} />
+                                </button>
+                            </div>
+                            <div className="relative z-10 overflow-y-auto pr-2 flex-grow">
+                                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">{activeModal.title}</h3>
+                                <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 mb-6 border-l-4 border-red-500 pl-4 py-1 font-medium bg-slate-50 dark:bg-slate-900">{activeModal.desc || activeModal.date}</p>
+                                <div className="prose text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">
                                     <p>Comprehensive details about this section would be loaded here. At Connexative, we pride ourselves on deep technical expertise and delivering measurable results for every client engagement.</p>
                                 </div>
                             </div>
@@ -118,24 +121,27 @@ export default function About() {
                                 ABOUT US
                             </div>
                             <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">
-                                We provide our clients with <span className="text-red-600">innovative solutions.</span>
+                                Providing <span className="text-red-600">innovative business solutions.</span>
                             </h2>
                             <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light">
-                                At Connexative, we develop smart, maintainable software solutions that help businesses scale efficiently and adapt to change. Our team combines technical expertise with creative problem-solving to deliver systems that are reliable, future-ready, and tailored to each client’s unique goals.
+                                Connexative Solutions Inc. (CSI) was established to provide innovative business solutions through the use of emerging technologies. We ensure that our customers receive cost-effective, high-quality products and services, supported by a strong network of trusted partners.
+                            </p>
+                            <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light mt-4">
+                                Our strength lies in combining diverse expertise with a clear focus on client needs. This enables us to deliver comprehensive, one-stop solutions that address the evolving demands of today’s markets.
                             </p>
                             
                             <div className="grid sm:grid-cols-2 gap-6 pt-6">
-                                <button onClick={() => setActiveModal({title: "Best IT Solutions & Service", desc: "Our award-winning approach to IT."})} className="flex items-center gap-4 group text-left">
+                                <button onClick={() => setActiveModal({title: "Our Mission", desc: "LEADER IN THIS FIELD BY DELIVERING SOLUTIONS THAT CREATE REAL VALUE FOR OUR CLIENTS."})} className="flex items-center gap-4 group text-left">
                                     <div className="w-14 h-14 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all shadow-sm">
                                         <Target size={24} />
                                     </div>
-                                    <span className="font-bold text-slate-900 dark:text-white group-hover:text-red-600 transition-colors">Best IT Solutions<br/>& Service</span>
+                                    <span className="font-bold text-slate-900 dark:text-white group-hover:text-red-600 transition-colors">Our Mission<br/>& Vision</span>
                                 </button>
-                                <button onClick={() => setActiveModal({title: "24/7 Customer Service", desc: "Always online. Always ready."})} className="flex items-center gap-4 group text-left">
+                                <button onClick={() => setActiveModal({title: "Our Commitment", desc: "We deliver end-to-end solutions that span across IT systems, payment gateways, military and security technologies."})} className="flex items-center gap-4 group text-left">
                                     <div className="w-14 h-14 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all shadow-sm">
                                         <Zap size={24} />
                                     </div>
-                                    <span className="font-bold text-slate-900 dark:text-white group-hover:text-red-600 transition-colors">24 Hour's<br/>Customer Service</span>
+                                    <span className="font-bold text-slate-900 dark:text-white group-hover:text-red-600 transition-colors">Client<br/>Commitment</span>
                                 </button>
                             </div>
 
