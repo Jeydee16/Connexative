@@ -5,10 +5,8 @@ import {
     MonitorPlay, DatabaseZap, Building2, Laptop, 
     CheckCircle2, ArrowRight, ExternalLink, X
 } from 'lucide-react';
-import ProjectShowcase from '../components/ProjectShowcase';
 import ContactSection from '../components/ContactSection';
 import FaqSection from '../components/FaqSection';
-import TestimonialSection from '../components/TestimonialSection';
 
 import { Link } from 'react-router-dom';
 
@@ -277,9 +275,8 @@ export default function Home() {
                 </div>
             </section>
 
-            <ProjectShowcase />
+
             <FaqSection />
-            <TestimonialSection />
             <ContactSection />
         </div>
     );

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronRight, ArrowRight, CheckCircle2, Navigation2, Target, Users, Zap, ExternalLink, X } from 'lucide-react';
-import ProjectShowcase from '../components/ProjectShowcase';
 import ContactSection from '../components/ContactSection';
 import { Link } from 'react-router-dom';
 
@@ -184,7 +183,7 @@ export default function About() {
                 </div>
             </section>
 
-            <ProjectShowcase />
+
 
             {/* Blog / Articles Section */}
             <section className="py-32 bg-slate-50 dark:bg-slate-900 relative">
