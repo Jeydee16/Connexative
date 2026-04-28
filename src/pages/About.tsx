@@ -84,7 +84,7 @@ export default function About() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight"
+                        className="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight font-display"
                     >
                         About Us
                     </motion.h1>
@@ -119,14 +119,14 @@ export default function About() {
                                 <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
                                 ABOUT US
                             </div>
-                            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight font-display">
                                 Providing <span className="text-red-600">innovative business solutions.</span>
                             </h2>
                             <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light">
-                                Connexative Solutions Inc. (CSI) was established to provide innovative business solutions through the use of emerging technologies. We ensure that our customers receive cost-effective, high-quality products and services, supported by a strong network of trusted partners.
+                                <strong className="text-slate-900 dark:text-white font-bold">Connexative Solutions Inc. (CSI)</strong> was incorporated to provide business solutions thru emerging technologies available to support its clientele. Our mission is to be the market leader in "emerging technologies", at every endeavor we take together with our clients. We ensure that our customers are supplied with most cost-effective products and are supported by the company's partners. A dynamic company not only to engage in business solutions, consultancy and integration but also to the marketing of its diverse pool of products as a Technology Provider.
                             </p>
                             <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light mt-4">
-                                Our strength lies in combining diverse expertise with a clear focus on client needs. This enables us to deliver comprehensive, one-stop solutions that address the evolving demands of today’s markets.
+                                It's manpower, composed of talented and dynamic people, a masters in their own fields. As diverse it's product offering is, <strong className="text-slate-900 dark:text-white font-bold">CSI</strong> manages to incorporate the right mix of product-client solutions. We aim to satisfy our client as being a one-stop-shop; to analyze the needs of it market and offer the optimum solutions...
                             </p>
                             
                             <div className="grid sm:grid-cols-2 gap-6 pt-6">
@@ -162,22 +162,6 @@ export default function About() {
                                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Team Work" className="rounded-3xl object-cover h-64 w-full shadow-lg" />
                                 <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Office" className="rounded-3xl object-cover h-80 w-full shadow-lg -mt-16" />
                             </div>
-                            
-                            <motion.div 
-                                initial={{ y: 30, opacity: 0 }}
-                                whileInView={{ y: 0, opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.4 }}
-                                className="absolute -bottom-10 left-10 bg-white dark:bg-slate-950 p-6 md:p-8 rounded-[2rem] shadow-2xl border border-slate-100 dark:border-slate-800 flex items-center gap-6"
-                            >
-                                <div className="text-red-600">
-                                    <Users size={48} strokeWidth={1.5} />
-                                </div>
-                                <div>
-                                    <div className="text-4xl font-black text-slate-900 dark:text-white">826 <span className="text-red-600">+</span></div>
-                                    <div className="text-sm font-bold text-slate-500 uppercase tracking-wider mt-1">Satisfied Clients</div>
-                                </div>
-                            </motion.div>
                         </motion.div>
                     </div>
                 </div>
@@ -185,13 +169,137 @@ export default function About() {
 
 
 
+            {/* At your disposal Section */}
+            <section className="py-24 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="text-center mb-16 max-w-3xl mx-auto">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/20 text-red-600 rounded-full font-bold tracking-wider text-sm uppercase mb-4">
+                            <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                            CAPABILITIES
+                        </div>
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight font-display tracking-tight mb-6">
+                            At your disposal...
+                        </h2>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-8">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-white dark:bg-slate-950 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+                        >
+                            <div className="w-12 h-12 bg-red-50 dark:bg-red-900/20 text-red-600 rounded-2xl flex items-center justify-center mb-6">
+                                <CheckCircle2 size={24} strokeWidth={2} />
+                            </div>
+                            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+                                Ranges from an end-to-end solutions of I.T. systems, to payment gateways, to military and security technologies, to environmental technologies and to bottom line raw materials.
+                            </p>
+                        </motion.div>
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="bg-white dark:bg-slate-950 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+                        >
+                            <div className="w-12 h-12 bg-red-50 dark:bg-red-900/20 text-red-600 rounded-2xl flex items-center justify-center mb-6">
+                                <CheckCircle2 size={24} strokeWidth={2} />
+                            </div>
+                            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+                                In our quest to provide our clients with the best solutions... we have partnered with various companies that supplies only the best industry-standard products but also the most cost-effective solutions.
+                            </p>
+                        </motion.div>
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="bg-white dark:bg-slate-950 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+                        >
+                            <div className="w-12 h-12 bg-red-50 dark:bg-red-900/20 text-red-600 rounded-2xl flex items-center justify-center mb-6">
+                                <CheckCircle2 size={24} strokeWidth={2} />
+                            </div>
+                            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+                                We value our client... as partners, as they grow, we grow with them... We indulge our clients with the saying "what you need, is what you get" concept.
+                            </p>
+                        </motion.div>
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="bg-gradient-to-br from-slate-900 to-slate-800 dark:from-red-600 dark:to-orange-500 p-8 rounded-3xl border border-transparent shadow-xl text-white relative overflow-hidden group"
+                        >
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150 duration-700"></div>
+                            <div className="w-12 h-12 bg-white/20 text-white rounded-2xl flex items-center justify-center mb-6 relative z-10 backdrop-blur-sm">
+                                <Target size={24} strokeWidth={2} />
+                            </div>
+                            <p className="text-white/90 text-2xl font-bold leading-snug relative z-10 font-display">
+                                Simply because we want to make things work!
+                            </p>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* What we offer Section */}
+            <section className="py-24 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="flex flex-col lg:flex-row lg:items-center gap-16">
+                        <div className="lg:w-1/3">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 rounded-full font-bold tracking-wider text-sm uppercase mb-4">
+                                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                                SERVICES
+                            </div>
+                            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight font-display tracking-tight mb-6">
+                                What we offer?
+                            </h2>
+                            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">
+                                We provide a comprehensive suite of systems and technologies customized to meet the rigorous demands of various sectors.
+                            </p>
+                            <div className="hidden lg:block w-24 h-1 bg-red-600 rounded-full"></div>
+                        </div>
+
+                        <div className="lg:w-2/3">
+                            <div className="grid sm:grid-cols-2 gap-6">
+                                {[
+                                    'Military and Defense Systems',
+                                    'Security Systems & Telecom Equipments',
+                                    'POS & Payment Gateways Systems',
+                                    'Applications & Software Development',
+                                    'Oil & Lubricants and other Petroleum products',
+                                    'Alternative & Renewable Energy Technologies'
+                                ].map((item, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: idx * 0.1 }}
+                                        className="flex flex-col gap-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl group hover:border-red-500/50 dark:hover:border-red-500/50 hover:bg-red-50/50 dark:hover:bg-red-900/10 transition-all shadow-sm hover:shadow-md"
+                                    >
+                                        <div className="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                            <CheckCircle2 size={24} strokeWidth={2} />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 font-display">
+                                            {item}
+                                        </h3>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Blog / Articles Section */}
             <section className="py-32 bg-slate-50 dark:bg-slate-900 relative">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                         <div>
-                            <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-4">OUR SPECIALITIES</h2>
-                            <h3 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                            <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-4 font-sans">OUR SPECIALITIES</h2>
+                            <h3 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight font-display tracking-tight">
                                 Exploring Its Potential in<br/>Various Industries.
                             </h3>
                         </div>

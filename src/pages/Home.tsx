@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import ContactSection from '../components/ContactSection';
 import FaqSection from '../components/FaqSection';
+import InteractiveServices from '../components/InteractiveServices';
 
 import { Link } from 'react-router-dom';
 
@@ -21,15 +22,6 @@ const SPECIALTIES = [
     { title: 'Digital Service Platforms', desc: 'Scalable platforms from ride-hailing to secure payment gateways.', icon: Laptop, details: 'Our digital services encompass Ride Hailing Systems, Drop Shipping logistical support, Booking Systems for professionals, and seamless POS & Payment Gateway Systems both online and offline.' },
     { title: 'Business Solutions', desc: 'Enterprise ERP, HRIS, ecommerce, and custom websites.', icon: Building2, details: 'Manage and scale with our Human Resource Information Systems, eCommerce and Membership Systems, Multi Level Marketing Systems, Enterprise Resource Planning (ERP LITE), and Corporate Website Creation.' },
     { title: 'Services & Infrastructure', desc: 'Consulting, project management, and endpoint security.', icon: Server, details: 'From Consulting and Staff Augmentation to Project Management, Custom Software Development, Data Migration, Warehousing, Analytics, and Endpoint Security.' },
-];
-
-const SERVICES = [
-    { title: 'Custom Software Development', desc: 'Build systems from scratch or enhance your existing system.', icon: Code, details: 'Let our team build or enhance your business applications tailored exactly to your specifications from end to end.' },
-    { title: 'Consulting & Staff Augmentation', desc: 'Technical consulting and contractual staff augmentation.', icon: Headphones, details: 'Business and Technical Consulting. Outsource your workforce to us and get access to top-notch professionals without the hiring hassle.' },
-    { title: 'Data Migration & Analytics', desc: 'Consolidate multiple sources for clear decision making.', icon: Database, details: 'Trouble having your data scattered? We consolidate everything into a single warehouse so insights are at your fingertips.' },
-    { title: 'Strategic Industries', desc: 'Specialized technologies for defense, energy, and telecom.', icon: GitMerge, details: 'Military and Defense Systems, Security Systems, Telecom Equipment, Alternative and Renewable Energy Technology, and Petroleum Products Systems.' },
-    { title: 'Project Management', desc: 'Complex projects handled by dedicated PMs.', icon: Wrench, details: 'Having complex projects and not enough time to hire a PM? Let our seasoned project managers steer your deliverables.' },
-    { title: 'End Point Security', desc: 'Secure your company information from outside threats.', icon: CheckCircle2, details: 'Robust security solutions securing endpoints against malicious attacks, ensuring business continuity and data integrity.' },
 ];
 
 const containerVariants = {
@@ -133,7 +125,7 @@ export default function Home() {
                             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                             <span className="text-white text-sm font-medium tracking-wide">Next Generation Tech Partner</span>
                         </div>
-                        <h1 className="text-5xl lg:text-7xl font-bold text-white leading-[1.1] mb-8">
+                        <h1 className="text-5xl lg:text-7xl font-bold text-white leading-[1.1] mb-8 font-display">
                             Innovative Solutions through <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Emerging Technologies.</span>
                         </h1>
                         <p className="text-xl text-slate-300 mb-10 leading-relaxed font-light max-w-2xl">
@@ -192,7 +184,7 @@ export default function Home() {
                                 <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
                                 About Connexative
                             </div>
-                            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight font-display">
                                 Delivering solutions that create real value.
                             </h2>
                             <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light">
@@ -207,9 +199,9 @@ export default function Home() {
             <section className="py-32 bg-white dark:bg-slate-950 relative">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-20 max-w-2xl mx-auto">
-                        <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-4">Our Specialties</h2>
-                        <h3 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Mastering Core Technologies</h3>
-                        <p className="text-slate-600 dark:text-slate-400 text-lg">Click on any expertise area to discover deep insights into our specialized approach and methodology.</p>
+                        <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-4 font-sans">Our Specialties</h2>
+                        <h3 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6 font-display tracking-tight">Mastering Core Technologies</h3>
+                        <p className="text-slate-600 dark:text-slate-400 text-lg font-light">Click on any expertise area to discover deep insights into our specialized approach and methodology.</p>
                     </div>
                     
                     <motion.div 
@@ -229,7 +221,7 @@ export default function Home() {
                                 <div className="w-16 h-16 bg-white dark:bg-slate-950 shadow-sm text-slate-900 dark:text-white rounded-2xl flex items-center justify-center mb-8 relative z-10 group-hover:bg-red-600 group-hover:text-white transition-colors duration-500">
                                     <spec.icon size={32} strokeWidth={1.5} />
                                 </div>
-                                <h4 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white relative z-10">{spec.title}</h4>
+                                <h4 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white relative z-10 font-display">{spec.title}</h4>
                                 <p className="text-slate-600 dark:text-slate-400 mb-8 flex-grow relative z-10 font-light">{spec.desc}</p>
                                 <div className="flex items-center gap-2 text-red-600 font-bold uppercase tracking-wider text-sm mt-auto relative z-10 group-hover:text-slate-900 dark:text-white">
                                     Read More <ExternalLink size={16} />
@@ -241,39 +233,7 @@ export default function Home() {
             </section>
 
             {/* Services Grid with Cards */}
-            <section id="services" className="py-32 bg-slate-950 relative overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-                        <div className="max-w-xl">
-                            <h2 className="text-sm font-bold text-red-500 tracking-widest uppercase mb-4">Connexative Services</h2>
-                            <h3 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">Comprehensive Technical Offerings</h3>
-                        </div>
-                    </div>
-
-                    <motion.div 
-                        variants={containerVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-50px" }}
-                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-                    >
-                        {SERVICES.map((srv, i) => (
-                            <motion.button 
-                                key={i}
-                                variants={itemVariants}
-                                onClick={() => setActiveModalItem(srv)}
-                                className="group relative p-10 bg-slate-900/50 backdrop-blur-sm rounded-[2rem] border border-slate-800 hover:border-red-500/50 transition-all duration-500 text-left"
-                            >
-                                <div className="w-16 h-16 bg-slate-800 rounded-2xl flex items-center justify-center text-red-400 group-hover:bg-red-500 group-hover:text-white transition-colors duration-500 mb-8 border border-slate-700">
-                                    <srv.icon size={32} strokeWidth={1.5} />
-                                </div>
-                                <h4 className="text-2xl font-bold mb-4 text-white group-hover:text-red-400">{srv.title}</h4>
-                                <p className="text-slate-400 group-hover:text-slate-300 leading-relaxed font-light">{srv.desc}</p>
-                            </motion.button>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
+            <InteractiveServices />
 
 
             <FaqSection />

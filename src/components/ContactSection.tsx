@@ -3,23 +3,6 @@ import { motion } from 'motion/react';
 import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
 
 export default function ContactSection() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const subject = formData.get('subject');
-    const phone = formData.get('phone');
-    const message = formData.get('message');
-    
-    // Construct body
-    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-    
-    // Trigger mailto link
-    window.location.href = `mailto:connectme@connexative.com?subject=${encodeURIComponent(subject as string)}&body=${body}`;
-    alert("Message format prepared. Your default email client will now open.");
-  };
-
   return (
     <section className="py-32 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 relative overflow-hidden">
       {/* Decorative center grid */}
@@ -29,8 +12,8 @@ export default function ContactSection() {
         <div className="grid lg:grid-cols-2 gap-20">
           
           <div className="flex flex-col justify-center">
-            <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-4">Contact Details</h2>
-            <h3 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-8 leading-tight">Ready to start your next big project?</h3>
+            <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-4 font-sans">Contact Details</h2>
+            <h3 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-8 leading-tight font-display tracking-tight">Ready to start your next big project?</h3>
             <p className="text-slate-600 dark:text-slate-400 mb-12 text-lg font-light leading-relaxed">Whether you need custom software development, robust IT support, or an entire infrastructure overhaul, our team is ready to deliver.</p>
             
             <div className="space-y-10">
@@ -71,39 +54,24 @@ export default function ContactSection() {
              initial={{ opacity: 0, y: 50 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
-             className="bg-white dark:bg-slate-950 rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative border border-slate-100 dark:border-slate-800"
+             className="bg-white dark:bg-slate-950 rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative border border-slate-100 dark:border-slate-800 flex flex-col justify-center items-center text-center"
           >
-            <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white mb-8">Make an Online Appointment</h3>
-            <p className="text-slate-600 dark:text-slate-400 mb-8">For Business Planning.</p>
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Your Name *</label>
-                    <input type="text" name="name" placeholder="John Doe" required className="w-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:outline-none focus:ring-4 focus:ring-red-500/20 focus:border-red-500 focus:bg-white dark:bg-slate-950 transition-all font-medium placeholder:font-normal placeholder:text-slate-400" />
-                </div>
-                <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Your E-Mail *</label>
-                    <input type="email" name="email" placeholder="john@company.com" required className="w-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:outline-none focus:ring-4 focus:ring-red-500/20 focus:border-red-500 focus:bg-white dark:bg-slate-950 transition-all font-medium placeholder:font-normal placeholder:text-slate-400" />
-                </div>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Subject *</label>
-                      <input type="text" name="subject" placeholder="Subject" required className="w-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:outline-none focus:ring-4 focus:ring-red-500/20 focus:border-red-500 focus:bg-white dark:bg-slate-950 transition-all font-medium placeholder:font-normal placeholder:text-slate-400" />
-                  </div>
-                  <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Phone *</label>
-                      <input type="tel" name="phone" placeholder="Phone" required className="w-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:outline-none focus:ring-4 focus:ring-red-500/20 focus:border-red-500 focus:bg-white dark:bg-slate-950 transition-all font-medium placeholder:font-normal placeholder:text-slate-400" />
-                  </div>
-              </div>
-              <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Message *</label>
-                  <textarea name="message" placeholder="Tell us about your project..." rows={5} required className="w-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:outline-none focus:ring-4 focus:ring-red-500/20 focus:border-red-500 focus:bg-white dark:bg-slate-950 transition-all resize-none font-medium placeholder:font-normal placeholder:text-slate-400"></textarea>
-              </div>
-              <button type="submit" className="bg-slate-900 hover:bg-red-600 text-white font-bold py-5 px-8 rounded-2xl w-full transition-all duration-300 shadow-xl shadow-slate-900/20 hover:shadow-red-600/30 flex items-center justify-center gap-3">
-                Send Now <ExternalLink size={18} />
-              </button>
-            </form>
+            <div className="w-24 h-24 bg-red-50 dark:bg-red-900/20 text-red-600 rounded-full flex items-center justify-center mb-8">
+              <Mail size={48} strokeWidth={1.5} />
+            </div>
+            <h3 className="text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white mb-6 font-display">Reach Out To Us</h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-10 text-lg font-light max-w-sm">
+              We would love to hear from you. Send us an email regarding your inquiries, projects, or business planning.
+            </p>
+            <a 
+              href="mailto:connectme@connexative.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-900 hover:bg-red-600 text-white font-bold py-5 px-10 rounded-2xl w-full transition-all duration-300 shadow-xl shadow-slate-900/20 hover:shadow-red-600/30 flex items-center justify-center gap-3 text-lg"
+            >
+              Send us an email <ExternalLink size={20} />
+            </a>
+            <p className="mt-6 text-slate-500 font-medium">connectme@connexative.com</p>
           </motion.div>
 
         </div>

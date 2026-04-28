@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import StrategicIndustries from './pages/StrategicIndustries';
 import { AnimatePresence, motion } from 'motion/react';
 import { ArrowUp } from 'lucide-react';
 
@@ -54,6 +55,7 @@ export default function App() {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/strategic-industries" element={<StrategicIndustries />} />
             <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />

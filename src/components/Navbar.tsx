@@ -40,82 +40,142 @@ export default function Navbar() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white dark:bg-slate-950 shadow-md py-3' : 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-md py-6'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+    <nav className={`fixed w-full z-50 transition-all duration-700 ease-in-out ${isScrolled ? 'py-3' : 'py-6'}`}>
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl py-3 px-6 rounded-full border border-white/20 dark:border-slate-800/20 shadow-2xl shadow-black/5' : ''}`}>
         
         {/* Clickable Logo */}
         <Link to="/" onClick={scrollToTop} className="flex items-center gap-3 group focus:outline-none">
-          <img src="/logo.jpeg" alt="Connexative Solutions Inc." className="h-10 md:h-12 w-auto object-contain rounded-lg" />
+          <div className="relative overflow-hidden rounded-xl">
+            <img src="/logo.jpeg" alt="Connexative Solutions Inc." className="h-10 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-red-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </div>
           <div className="flex flex-col ml-1 text-left hidden sm:flex">
-              <span className="font-bold text-red-600 leading-none text-2xl tracking-tight">CONNEXATIVE</span>
-              <span className="font-semibold text-slate-800 dark:text-slate-300 leading-none text-[10px] tracking-[0.2em] mt-1">SOLUTIONS INC.</span>
+              <span className="font-extrabold text-red-600 leading-none text-2xl tracking-tighter group-hover:tracking-normal transition-all duration-500 italic font-display">CONNEXATIVE</span>
+              <span className="font-bold text-slate-800 dark:text-slate-300 leading-none text-[9px] tracking-[0.3em] mt-1.5 opacity-80 uppercase font-sans">Solutions Inc.</span>
           </div>
         </Link>
 
-        {/* Nav Links */}
-        <div className="hidden md:flex items-center space-x-10 bg-slate-50/50 dark:bg-slate-900/50 backdrop-blur-lg px-8 py-2 rounded-full border border-slate-200/50 dark:border-slate-700/50">
-          <Link to="/" onClick={scrollToTop} className={`font-semibold transition-colors py-2 relative group ${location.pathname === '/' ? 'text-red-600' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
-              Home
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-red-600 transition-all duration-300 ${location.pathname === '/' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+        {/* Nav Links - Center floating pill */}
+        <div className={`hidden md:flex items-center space-x-1 transition-all duration-500 ${isScrolled ? '' : 'bg-slate-50/40 dark:bg-slate-900/40 backdrop-blur-xl px-2 py-1.5 rounded-full border border-slate-200/50 dark:border-slate-800/50 shadow-sm'}`}>
+          <Link to="/" onClick={scrollToTop} className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.pathname === '/' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
+              <span className="relative z-10">Home</span>
+              {location.pathname === '/' && (
+                <motion.div layoutId="nav-pill" className="absolute inset-0 bg-red-600 z-0" transition={{ type: 'spring', duration: 0.6 }} />
+              )}
           </Link>
-          <Link to="/about" onClick={scrollToTop} className={`font-semibold transition-colors py-2 relative group ${location.pathname === '/about' ? 'text-red-600' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
-              About Us
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-red-600 transition-all duration-300 ${location.pathname === '/about' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+          <Link to="/about" onClick={scrollToTop} className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.pathname === '/about' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
+              <span className="relative z-10">About Us</span>
+              {location.pathname === '/about' && (
+                <motion.div layoutId="nav-pill" className="absolute inset-0 bg-red-600 z-0" transition={{ type: 'spring', duration: 0.6 }} />
+              )}
           </Link>
-          <Link to="/contact" onClick={scrollToTop} className={`font-semibold transition-colors py-2 relative group ${location.pathname === '/contact' ? 'text-red-600' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
-              Contact Us
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-red-600 transition-all duration-300 ${location.pathname === '/contact' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+          <Link to="/strategic-industries" onClick={scrollToTop} className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.pathname === '/strategic-industries' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
+              <span className="relative z-10">Industries</span>
+              {location.pathname === '/strategic-industries' && (
+                <motion.div layoutId="nav-pill" className="absolute inset-0 bg-red-600 z-0" transition={{ type: 'spring', duration: 0.6 }} />
+              )}
+          </Link>
+          <Link to="/contact" onClick={scrollToTop} className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.pathname === '/contact' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
+              <span className="relative z-10">Contact Us</span>
+              {location.pathname === '/contact' && (
+                <motion.div layoutId="nav-pill" className="absolute inset-0 bg-red-600 z-0" transition={{ type: 'spring', duration: 0.6 }} />
+              )}
           </Link>
         </div>
 
         <div className="hidden md:flex items-center gap-4">
           <button 
             onClick={toggleTheme}
-            className="p-3 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-600 transition-colors"
+            className="w-12 h-12 rounded-full bg-slate-100/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300 flex items-center justify-center border border-slate-200/50 dark:border-slate-700/50 backdrop-blur-md"
             aria-label="Toggle Theme"
           >
             {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-          <Link to="/contact" onClick={scrollToTop} className="bg-slate-900 text-white px-8 py-3.5 rounded-full font-bold hover:bg-red-600 transition-all duration-300 shadow-xl shadow-slate-900/20 hover:shadow-red-600/30 flex items-center gap-2 transform hover:-translate-y-0.5">
+          <Link to="/contact" onClick={scrollToTop} className="bg-red-600 text-white px-8 py-3.5 rounded-full font-bold hover:bg-slate-900 transition-all duration-500 shadow-xl shadow-red-600/20 hover:shadow-slate-900/30 flex items-center gap-2 transform hover:-translate-y-0.5 active:scale-95 group">
             Get A Quote
-            <ChevronRight size={16} />
+            <ChevronRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
 
-        <div className="md:hidden flex items-center gap-3 relative z-[100]">
+        <div className="md:hidden flex items-center gap-3 relative z-[110]">
           <button 
             onClick={toggleTheme}
-            className="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 active:scale-95 transition-transform"
+            className="w-12 h-12 rounded-2xl bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 active:scale-90 transition-all border border-slate-200/50 dark:border-slate-800/50 backdrop-blur-md flex items-center justify-center shadow-sm"
             aria-label="Toggle Theme"
           >
-            {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
+            {isDarkMode ? <Sun size={22} /> : <Moon size={22} />}
           </button>
           <button 
-            className="text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 p-3 rounded-xl active:scale-95 transition-transform" 
+            className={`w-12 h-12 flex flex-col items-center justify-center gap-1.5 transition-all duration-300 ${isMobileMenuOpen ? 'bg-red-600 text-white' : 'bg-white/50 dark:bg-slate-900/50 text-slate-900 dark:text-white'} rounded-2xl active:scale-90 border border-slate-200/50 dark:border-slate-800/50 backdrop-blur-md shadow-sm`} 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <span className={`w-6 h-0.5 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`w-4 h-0.5 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+            <span className={`w-6 h-0.5 bg-current transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
           </button>
         </div>
       </div>
       
-      {/* Mobile menu */}
+      {/* Refined Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0, scale: 0.95 }}
-            animate={{ opacity: 1, height: 'auto', scale: 1 }}
-            exit={{ opacity: 0, height: 0, scale: 0.95 }}
-            className="md:hidden bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 overflow-hidden shadow-xl"
-          >
-            <div className="px-6 py-8 flex flex-col space-y-6">
-              <Link to="/" className="text-xl font-bold text-slate-800 dark:text-slate-300" onClick={() => { scrollToTop(); setIsMobileMenuOpen(false); }}>Home</Link>
-              <Link to="/about" className="text-xl font-bold text-slate-800 dark:text-slate-300" onClick={() => { scrollToTop(); setIsMobileMenuOpen(false); }}>About Us</Link>
-              <Link to="/contact" className="text-xl font-bold text-slate-800 dark:text-slate-300" onClick={() => { scrollToTop(); setIsMobileMenuOpen(false); }}>Contact Us</Link>
-              <Link to="/contact" className="bg-red-600 text-white text-center py-4 rounded-xl font-bold shadow-lg shadow-red-600/20 mt-4" onClick={() => { scrollToTop(); setIsMobileMenuOpen(false); }}>Get A Quote Now</Link>
-            </div>
-          </motion.div>
+          <>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[100] md:hidden"
+            />
+            <motion.div 
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[105] shadow-[-20px_0_50px_rgba(0,0,0,0.1)] p-8 md:hidden flex flex-col justify-center border-l dark:border-slate-800"
+            >
+              <div className="flex flex-col space-y-8">
+                {[
+                  { name: 'Home', path: '/' },
+                  { name: 'About Us', path: '/about' },
+                  { name: 'Industries', path: '/strategic-industries' },
+                  { name: 'Contact Us', path: '/contact' }
+                ].map((item, idx) => (
+                  <motion.div 
+                    key={item.path}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                  >
+                    <Link 
+                      to={item.path} 
+                      className={`text-4xl font-black ${location.pathname === item.path ? 'text-red-600' : 'text-slate-900 dark:text-white hover:text-red-600'} transition-colors block`} 
+                      onClick={() => { scrollToTop(); setIsMobileMenuOpen(false); }}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                ))}
+                
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="pt-8"
+                >
+                  <Link 
+                    to="/contact" 
+                    className="bg-red-600 text-white text-center py-5 rounded-2xl font-black text-xl shadow-2xl shadow-red-600/30 block group active:scale-95 transition-all" 
+                    onClick={() => { scrollToTop(); setIsMobileMenuOpen(false); }}
+                  >
+                    GET A QUOTE
+                  </Link>
+                  <p className="text-center text-slate-500 dark:text-slate-500 mt-6 text-sm font-medium tracking-widest uppercase">Start Your Journey</p>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
