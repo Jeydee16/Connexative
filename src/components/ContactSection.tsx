@@ -4,7 +4,7 @@ import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
 
 export default function ContactSection() {
   return (
-    <section className="py-32 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 relative overflow-hidden">
+    <section id="contact" className="py-32 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 relative overflow-hidden">
       {/* Decorative center grid */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(#94a3b8_2px,transparent_2px)] [background-size:24px_24px] opacity-[0.05] z-0" />
       

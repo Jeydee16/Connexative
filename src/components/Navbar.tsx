@@ -40,47 +40,44 @@ export default function Navbar() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-700 ease-in-out ${isScrolled ? 'py-3' : 'py-6'}`}>
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl py-3 px-6 rounded-full border border-white/20 dark:border-slate-800/20 shadow-2xl shadow-black/5' : ''}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800 shadow-sm ${isScrolled ? 'py-3' : 'py-5'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         
         {/* Clickable Logo */}
-        <Link to="/" onClick={scrollToTop} className="flex items-center gap-3 group focus:outline-none">
-          <div className="relative overflow-hidden rounded-xl">
-            <img src="/logo.jpeg" alt="Connexative Solutions Inc." className="h-10 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-gradient-to-tr from-red-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </div>
+        <a href="#home" onClick={scrollToTop} className="flex items-center gap-3 group focus:outline-none">
+          <img src="/logo-removebg-preview.png" alt="Connexative Solutions Inc." className="h-10 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-110" />
           <div className="flex flex-col ml-1 text-left hidden sm:flex">
               <span className="font-extrabold text-red-600 leading-none text-2xl tracking-tighter group-hover:tracking-normal transition-all duration-500 italic font-display">CONNEXATIVE</span>
               <span className="font-bold text-slate-800 dark:text-slate-300 leading-none text-[9px] tracking-[0.3em] mt-1.5 opacity-80 uppercase font-sans">Solutions Inc.</span>
           </div>
-        </Link>
+        </a>
 
         {/* Nav Links - Center floating pill */}
-        <div className={`hidden md:flex items-center space-x-1 transition-all duration-500 ${isScrolled ? '' : 'bg-slate-50/40 dark:bg-slate-900/40 backdrop-blur-xl px-2 py-1.5 rounded-full border border-slate-200/50 dark:border-slate-800/50 shadow-sm'}`}>
-          <Link to="/" onClick={scrollToTop} className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.pathname === '/' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
+        <div className="hidden md:flex items-center space-x-1">
+          <a href="#home" onClick={scrollToTop} className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.hash === '#home' || location.hash === '' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
               <span className="relative z-10">Home</span>
-              {location.pathname === '/' && (
+              {(location.hash === '#home' || location.hash === '') && (
                 <motion.div layoutId="nav-pill" className="absolute inset-0 bg-red-600 z-0" transition={{ type: 'spring', duration: 0.6 }} />
               )}
-          </Link>
-          <Link to="/about" onClick={scrollToTop} className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.pathname === '/about' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
+          </a>
+          <a href="#about" className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.hash === '#about' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
               <span className="relative z-10">About Us</span>
-              {location.pathname === '/about' && (
+              {location.hash === '#about' && (
                 <motion.div layoutId="nav-pill" className="absolute inset-0 bg-red-600 z-0" transition={{ type: 'spring', duration: 0.6 }} />
               )}
-          </Link>
-          <Link to="/strategic-industries" onClick={scrollToTop} className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.pathname === '/strategic-industries' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
+          </a>
+          <a href="#industries" className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.hash === '#industries' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
               <span className="relative z-10">Industries</span>
-              {location.pathname === '/strategic-industries' && (
+              {location.hash === '#industries' && (
                 <motion.div layoutId="nav-pill" className="absolute inset-0 bg-red-600 z-0" transition={{ type: 'spring', duration: 0.6 }} />
               )}
-          </Link>
-          <Link to="/contact" onClick={scrollToTop} className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.pathname === '/contact' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
+          </a>
+          <a href="#contact" className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.hash === '#contact' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
               <span className="relative z-10">Contact Us</span>
-              {location.pathname === '/contact' && (
+              {location.hash === '#contact' && (
                 <motion.div layoutId="nav-pill" className="absolute inset-0 bg-red-600 z-0" transition={{ type: 'spring', duration: 0.6 }} />
               )}
-          </Link>
+          </a>
         </div>
 
         <div className="hidden md:flex items-center gap-4">
@@ -91,10 +88,10 @@ export default function Navbar() {
           >
             {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-          <Link to="/contact" onClick={scrollToTop} className="bg-red-600 text-white px-8 py-3.5 rounded-full font-bold hover:bg-slate-900 transition-all duration-500 shadow-xl shadow-red-600/20 hover:shadow-slate-900/30 flex items-center gap-2 transform hover:-translate-y-0.5 active:scale-95 group">
+          <a href="#contact" className="bg-red-600 text-white px-8 py-3.5 rounded-full font-bold hover:bg-slate-900 transition-all duration-500 shadow-xl shadow-red-600/20 hover:shadow-slate-900/30 flex items-center gap-2 transform hover:-translate-y-0.5 active:scale-95 group">
             Get A Quote
             <ChevronRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
+          </a>
         </div>
 
         <div className="md:hidden flex items-center gap-3 relative z-[110]">
@@ -137,10 +134,10 @@ export default function Navbar() {
             >
               <div className="flex flex-col space-y-8">
                 {[
-                  { name: 'Home', path: '/' },
-                  { name: 'About Us', path: '/about' },
-                  { name: 'Industries', path: '/strategic-industries' },
-                  { name: 'Contact Us', path: '/contact' }
+                  { name: 'Home', path: '#home' },
+                  { name: 'About Us', path: '#about' },
+                  { name: 'Industries', path: '#industries' },
+                  { name: 'Contact Us', path: '#contact' }
                 ].map((item, idx) => (
                   <motion.div 
                     key={item.path}
@@ -148,13 +145,13 @@ export default function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.1 }}
                   >
-                    <Link 
-                      to={item.path} 
-                      className={`text-4xl font-black ${location.pathname === item.path ? 'text-red-600' : 'text-slate-900 dark:text-white hover:text-red-600'} transition-colors block`} 
-                      onClick={() => { scrollToTop(); setIsMobileMenuOpen(false); }}
+                    <a 
+                      href={item.path} 
+                      className={`text-4xl font-black ${location.hash === item.path ? 'text-red-600' : 'text-slate-900 dark:text-white hover:text-red-600'} transition-colors block`} 
+                      onClick={() => { setIsMobileMenuOpen(false); }}
                     >
                       {item.name}
-                    </Link>
+                    </a>
                   </motion.div>
                 ))}
                 
@@ -164,13 +161,13 @@ export default function Navbar() {
                   transition={{ delay: 0.4 }}
                   className="pt-8"
                 >
-                  <Link 
-                    to="/contact" 
+                  <a 
+                    href="#contact" 
                     className="bg-red-600 text-white text-center py-5 rounded-2xl font-black text-xl shadow-2xl shadow-red-600/30 block group active:scale-95 transition-all" 
-                    onClick={() => { scrollToTop(); setIsMobileMenuOpen(false); }}
+                    onClick={() => { setIsMobileMenuOpen(false); }}
                   >
                     GET A QUOTE
-                  </Link>
+                  </a>
                   <p className="text-center text-slate-500 dark:text-slate-500 mt-6 text-sm font-medium tracking-widest uppercase">Start Your Journey</p>
                 </motion.div>
               </div>

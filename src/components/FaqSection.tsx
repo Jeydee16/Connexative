@@ -38,7 +38,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="py-24 bg-slate-100/50 dark:bg-slate-800/50">
+    <section id="faq" className="py-24 bg-slate-100/50 dark:bg-slate-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           
@@ -52,8 +52,8 @@ export default function FaqSection() {
              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                <div className="absolute -top-16 -left-16 w-32 h-32 bg-white dark:bg-slate-950 rounded-full blur-2xl opacity-50 z-10"></div>
                <img 
-                 src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200" 
-                 alt="Business Professional" 
+                 src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=1200" 
+                 alt="Customer Support FAQ" 
                  className="w-full object-cover h-[500px]"
                />
                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>

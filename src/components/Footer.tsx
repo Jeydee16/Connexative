@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
               <div className="lg:col-span-2">
                   <Link to="/" onClick={scrollToTop} className="flex items-center gap-3 mb-6 focus:outline-none group">
-                      <img src="/logo.jpeg" alt="Connexative Solutions Inc." className="h-10 md:h-12 w-auto object-contain rounded-lg" />
+                      <img src="/logo-removebg-preview.png" alt="Connexative Solutions Inc." className="h-10 md:h-12 w-auto object-contain" />
                       <div className="flex flex-col ml-1 text-left hidden sm:flex">
                           <span className="font-bold text-red-600 leading-none text-2xl tracking-tight">CONNEXATIVE</span>
                           <span className="font-semibold text-slate-300 leading-none text-[10px] tracking-[0.2em] mt-1">SOLUTIONS INC.</span>
@@ -24,9 +24,10 @@ export default function Footer() {
               <div>
                   <h4 className="text-white font-bold mb-6 tracking-wide">Quick Links</h4>
                   <div className="flex flex-col gap-4">
-                      <Link to="/" onClick={scrollToTop} className="hover:text-red-400 transition-colors w-fit">Home</Link>
-                      <Link to="/about" onClick={scrollToTop} className="hover:text-red-400 transition-colors w-fit">About Us</Link>
-                      <Link to="/contact" onClick={scrollToTop} className="hover:text-red-400 transition-colors w-fit">Contact Us</Link>
+                      <a href="#home" onClick={scrollToTop} className="hover:text-red-400 transition-colors w-fit">Home</a>
+                      <a href="#about" className="hover:text-red-400 transition-colors w-fit">About Us</a>
+                      <a href="#industries" className="hover:text-red-400 transition-colors w-fit">Industries</a>
+                      <a href="#contact" className="hover:text-red-400 transition-colors w-fit">Contact Us</a>
                   </div>
               </div>
               
