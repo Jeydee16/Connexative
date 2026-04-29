@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-    CheckCircle2, ArrowRight, ExternalLink, Shield, Cctv, Zap, Fuel, Fingerprint, Wallet, Cpu, Linkedin, Mail, Sun, Users
+    CheckCircle2, ArrowRight, ExternalLink, Shield, Cctv, Zap, Fuel, Fingerprint, Wallet, Cpu, Linkedin, Mail, Sun, Users, X
 } from 'lucide-react';
 import ContactSection from '../components/ContactSection';
 
@@ -26,7 +26,7 @@ const INDUSTRIES = [
         id: 'security-telecom',
         title: 'Security & Telecom',
         icon: Cctv,
-        image: 'https://images.unsplash.com/photo-1557597774-9d2739f85a76?q=80&w=2000&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2000&auto=format&fit=crop',
         description: 'Next-generation surveillance and telecommunication infrastructure for enterprise and civil applications.',
         features: [
             'CCTV & Video Analytics',
@@ -40,7 +40,7 @@ const INDUSTRIES = [
         id: 'pos-payment',
         title: 'Payment Gateways',
         icon: Wallet,
-        image: 'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=2000&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1556742031-c6961e8560b0?q=80&w=2000&auto=format&fit=crop',
         description: 'Secure and efficient payment processing solutions for modern retail and digital commerce.',
         features: [
             'Point of Sale Integration',
@@ -96,7 +96,7 @@ const INDUSTRIES = [
         id: 'renewable-energy',
         title: 'Renewable Tech',
         icon: Sun,
-        image: 'https://images.unsplash.com/photo-1466611653911-95282fc3656b?q=80&w=2000&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2000&auto=format&fit=crop',
         description: 'Sustainable energy solutions harnessing alternative sources to power modern operations.',
         features: [
             'Solar & Wind Systems',
@@ -119,7 +119,7 @@ const itemVariants = {
 };
 
 export default function Home() {
-    const [expandedId, setExpandedId] = useState<string | null>(null);
+    const [selectedIndustryId, setSelectedIndustryId] = useState<string | null>(null);
 
 
     return (
@@ -376,129 +376,155 @@ export default function Home() {
                     </motion.div>
                 </div>
 
-                <div className="max-w-[1500px] mx-auto px-4 md:px-10 relative z-10">
-                    {/* Fixed Height Flex Container to Maintain Shape During Expansion */}
-                    <div className="flex flex-col lg:flex-row gap-5 h-auto lg:h-[600px] items-stretch">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                         {INDUSTRIES.map((ind, idx) => {
-                            const isExpanded = expandedId === ind.id;
                             const Icon = ind.icon;
                             return (
                                 <motion.div
                                     key={ind.id}
-                                    layout
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ 
-                                        duration: 0.6, 
-                                        delay: idx * 0.05,
-                                        layout: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-                                    }}
+                                    transition={{ duration: 0.5, delay: idx * 0.05 }}
                                     viewport={{ once: true }}
-                                    onClick={() => setExpandedId(isExpanded ? null : ind.id)}
-                                    className={`relative rounded-[2.5rem] overflow-hidden cursor-pointer group flex-grow transition-all duration-700 bg-white border border-transparent min-h-[140px] ${
-                                        isExpanded 
-                                        ? 'lg:flex-[6] shadow-2xl shadow-black/80' 
-                                        : 'lg:flex-1 hover:border-red-600/20 shadow-sm'
-                                    }`}
+                                    onClick={() => setSelectedIndustryId(ind.id)}
+                                    className="relative rounded-3xl overflow-hidden cursor-pointer group transition-all duration-500 bg-white shadow-lg hover:shadow-xl border border-transparent hover:border-red-100"
                                 >
-                                    {/* Collapsed State - Minimal White Icon Card */}
-                                    {!isExpanded && (
-                                        <div className="h-full w-full flex flex-col items-center justify-center p-6 text-center">
-                                            {/* Advanced Icon Container */}
-                                            <div className="relative group/icon mb-8">
-                                                {/* Ambient Glow */}
-                                                <div className="absolute inset-0 bg-red-600/20 blur-xl rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                    <div className="p-8 md:p-10 flex flex-col w-full h-full">
+                                        <div className="flex items-center gap-6 mb-6">
+                                            <div className="w-16 h-16 shrink-0 rounded-2xl bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:border-red-200 group-hover:bg-red-50 transition-colors duration-300">
+                                                <Icon size={24} className="text-slate-600 group-hover:text-red-500 transition-colors duration-300" strokeWidth={1.5} />
+                                            </div>
+                                            <h3 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight leading-tight group-hover:text-red-600 transition-colors duration-300">
+                                                {ind.title}
+                                            </h3>
+                                        </div>
+                                        
+                                        <div className="flex items-center gap-2 text-[10px] sm:text-xs font-black text-red-500 uppercase tracking-widest mt-auto pt-2">
+                                            <span>Click for details</span>
+                                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
+                        
+                        {/* Partner With Us Card */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: INDUSTRIES.length * 0.05 }}
+                            viewport={{ once: true }}
+                            className="relative rounded-3xl overflow-hidden group transition-all duration-500 bg-white shadow-lg hover:shadow-xl border border-transparent hover:border-red-100"
+                        >
+                            <div className="p-8 md:p-10 flex flex-col w-full h-full">
+                                <div className="flex items-center gap-6 mb-6">
+                                    <div className="w-16 h-16 shrink-0 rounded-2xl bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:border-red-200 group-hover:bg-red-50 transition-colors duration-300">
+                                        <Users size={24} className="text-slate-600 group-hover:text-red-500 transition-colors duration-300" strokeWidth={1.5} />
+                                    </div>
+                                    <h3 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight leading-tight group-hover:text-red-600 transition-colors duration-300">
+                                        Partner & Innovate
+                                    </h3>
+                                </div>
+                                <div className="mt-auto pt-2">
+                                    <a href="#contact" className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-black text-red-500 uppercase tracking-widest hover:text-red-600 transition-colors w-fit">
+                                        <span>Work with us</span>
+                                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                    </a>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+                
+                {/* Modal for selected industry */}
+                <AnimatePresence>
+                    {selectedIndustryId && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+                        >
+                            <div 
+                                className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm"
+                                onClick={() => setSelectedIndustryId(null)}
+                            />
+                            
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                                className="relative w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-2xl z-10 flex flex-col max-h-[90vh]"
+                            >
+                                {INDUSTRIES.filter(ind => ind.id === selectedIndustryId).map(ind => {
+                                    const Icon = ind.icon;
+                                    return (
+                                        <div key={ind.id} className="flex flex-col h-full overflow-y-auto">
+                                            <div className="relative h-48 sm:h-64 shrink-0">
+                                                <img 
+                                                    src={ind.image} 
+                                                    alt={ind.title} 
+                                                    className="absolute inset-0 w-full h-full object-cover"
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+                                                <button 
+                                                    onClick={() => setSelectedIndustryId(null)}
+                                                    className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors"
+                                                >
+                                                    <X size={20} />
+                                                </button>
                                                 
-                                                {/* Main Container */}
-                                                <div className="relative w-16 h-16 rounded-2xl bg-white flex items-center justify-center group-hover:bg-red-600 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-red-600/40 transition-all duration-500 border border-slate-100 group-hover:border-red-500 overflow-hidden">
-                                                    {/* Decorative corner accent */}
-                                                    <div className="absolute top-0 right-0 w-4 h-4 bg-red-600/10 group-hover:bg-white/20 -mr-2 -mt-2 rotate-45" />
-                                                    
-                                                    <Icon size={26} className="text-red-600 group-hover:text-white transition-colors duration-500 relative z-10" strokeWidth={1.5} />
-                                                    
-                                                    {/* Glassy Overlay */}
-                                                    <div className="absolute inset-x-0 top-0 h-[30%] bg-gradient-to-b from-white/20 to-transparent pointer-events-none group-hover:hidden" />
+                                                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 flex items-end gap-6">
+                                                    <div className="w-16 h-16 shrink-0 rounded-2xl bg-red-600 flex items-center justify-center shadow-lg border border-red-500/30">
+                                                        <Icon size={32} className="text-white" strokeWidth={1.5} />
+                                                    </div>
+                                                    <div>
+                                                        <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight drop-shadow-md">
+                                                            {ind.title}
+                                                        </h3>
+                                                    </div>
                                                 </div>
                                             </div>
                                             
-                                            <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-[0.25em] leading-tight px-2 max-w-[100px] group-hover:text-red-600 transition-colors duration-500">
-                                                {ind.title}
-                                            </h3>
-
-                                            <div className="mt-8 w-8 h-8 rounded-full border border-slate-100 flex items-center justify-center text-red-600 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-sm bg-white">
-                                                <ArrowRight size={14} />
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {/* Expanded Content - Professional Industrial Profile */}
-                                    <AnimatePresence>
-                                        {isExpanded && (
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                className="relative h-full w-full p-8 lg:p-16 flex flex-col justify-center z-20 overflow-hidden"
-                                            >
-                                                <div className="max-w-4xl">
-                                                    <div className="flex items-center gap-6 md:gap-10 mb-8 md:mb-12">
-                                                        {/* Expanded Icon Container */}
-                                                        <div className="relative shrink-0">
-                                                            {/* Background Decorative Rings */}
-                                                            <div className="absolute inset-0 bg-red-600/20 blur-3xl animate-pulse" />
-                                                            <div className="absolute -inset-4 border border-red-600/10 rounded-3xl animate-[spin_10s_linear_infinite]" />
-                                                            
-                                                            <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-3xl bg-gradient-to-br from-red-600 to-red-700 text-white flex items-center justify-center shadow-2xl shadow-red-600/40 border border-red-500/50">
-                                                                <Icon size={44} className="md:size-14" strokeWidth={1.5} />
-                                                                
-                                                                {/* Glass Reflection */}
-                                                                <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent rounded-t-3xl" />
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <h3 className="text-3xl md:text-5xl lg:text-7xl font-black text-slate-900 font-display tracking-tight uppercase leading-none">
-                                                                {ind.title}
-                                                            </h3>
-                                                            <div className="h-1.5 md:h-2 w-20 md:w-32 bg-red-600 mt-3 md:mt-4 rounded-full shadow-[0_4px_12px_rgba(220,38,38,0.3)]" />
-                                                        </div>
+                                            <div className="p-6 sm:p-10 bg-white">
+                                                <div className="flex flex-col lg:flex-row gap-10">
+                                                    <div className="flex-1">
+                                                        <p className="text-slate-600 mb-8 text-base font-light leading-relaxed">
+                                                            {ind.description}
+                                                        </p>
+                                                        <a 
+                                                            href="#contact"
+                                                            onClick={() => setSelectedIndustryId(null)}
+                                                            className="px-8 py-4 bg-slate-950 text-white rounded-xl font-bold uppercase tracking-widest text-[10px] hover:bg-red-600 transition-all inline-block w-full sm:w-auto text-center shadow-md"
+                                                        >
+                                                            Connect with Experts
+                                                        </a>
                                                     </div>
                                                     
-                                                    <div className="flex flex-col xl:flex-row gap-8 lg:gap-16 items-start">
-                                                        <div className="flex-1">
-                                                            <p className="text-slate-600 mb-8 md:mb-10 text-base md:text-xl font-light leading-relaxed max-w-xl">
-                                                                {ind.description}
-                                                            </p>
-                                                            <div className="flex flex-wrap gap-4">
-                                                                <a 
-                                                                    href="#contact"
-                                                                    className="px-8 md:px-10 py-4 md:py-5 bg-slate-950 text-white rounded-2xl font-bold uppercase tracking-widest text-[9px] md:text-[10px] hover:bg-red-600 transition-all transform hover:translate-y-[-2px] shadow-xl inline-block"
-                                                                >
-                                                                    Connect with Experts
-                                                                </a>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="flex-1 grid gap-3 md:gap-4 place-content-start w-full">
-                                                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-1 text-left">Key Competencies</p>
+                                                    <div className="flex-1">
+                                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4 text-left">Key Competencies</p>
+                                                        <div className="grid gap-3">
                                                             {ind.features.map((feature, fIdx) => (
-                                                                <div key={fIdx} className="flex items-center gap-3 md:gap-4 py-3 md:py-4 px-5 md:px-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-red-200 transition-colors">
-                                                                    <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0">
-                                                                        <CheckCircle2 size={14} className="text-red-600" />
+                                                                <div key={fIdx} className="flex items-center gap-4 bg-slate-50 py-3 px-4 rounded-xl border border-slate-100">
+                                                                    <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+                                                                        <CheckCircle2 size={12} className="text-red-600" />
                                                                     </div>
-                                                                    <span className="text-slate-900 text-[10px] md:text-xs font-black uppercase tracking-wider">{feature}</span>
+                                                                    <span className="text-slate-700 text-sm font-semibold tracking-wide">{feature}</span>
                                                                 </div>
                                                             ))}
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </motion.div>
-                            );
-                        })}
-                    </div>
-                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </section>
 
             <ContactSection />
