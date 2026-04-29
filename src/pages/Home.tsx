@@ -161,8 +161,8 @@ export default function Home() {
                         </h1>
 
                         <div className="flex flex-wrap gap-5">
-                            <a href="#services" className="bg-red-600 text-white px-8 py-4 rounded-full font-bold hover:bg-white dark:bg-slate-950 hover:text-red-600 transition-colors duration-300 flex items-center gap-2 shadow-xl shadow-red-600/20 group">
-                                EXPLORE SERVICES <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                            <a href="#industries" className="bg-red-600 text-white px-8 py-4 rounded-full font-bold hover:bg-white dark:bg-slate-950 hover:text-red-600 transition-colors duration-300 flex items-center gap-2 shadow-xl shadow-red-600/20 group uppercase">
+                                EXPLORE INDUSTRIES <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
                             </a>
                         </div>
                     </motion.div>
@@ -183,8 +183,8 @@ export default function Home() {
                         >
                             <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl group">
                                 <img 
-                                    src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop" 
-                                    alt="Expert Team" 
+                                    src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2080&auto=format&fit=crop" 
+                                    alt="CSI Datacenter" 
                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-60" />

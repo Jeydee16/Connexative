@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-400 py-16 border-t border-slate-800 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
               <div className="lg:col-span-2">
                   <Link to="/" onClick={scrollToTop} className="flex items-center gap-3 mb-6 focus:outline-none group">
                       <img src="/logo-removebg-preview.png" alt="Connexative Solutions Inc." className="h-10 md:h-12 w-auto object-contain" />
@@ -28,15 +28,6 @@ export default function Footer() {
                       <a href="#about" className="hover:text-red-400 transition-colors w-fit">About Us</a>
                       <a href="#industries" className="hover:text-red-400 transition-colors w-fit">Industries</a>
                       <a href="#contact" className="hover:text-red-400 transition-colors w-fit">Contact Us</a>
-                  </div>
-              </div>
-              
-              <div>
-                  <h4 className="text-white font-bold mb-6 tracking-wide">Legal</h4>
-                  <div className="flex flex-col gap-4">
-                      <a href="#" className="hover:text-red-400 transition-colors w-fit">Privacy Policy</a>
-                      <a href="#" className="hover:text-red-400 transition-colors w-fit">Terms of Service</a>
-                      <a href="#" className="hover:text-red-400 transition-colors w-fit">Cookie Policy</a>
                   </div>
               </div>
           </div>

@@ -15,13 +15,43 @@ export default function Navbar() {
     return false;
   });
 
+  const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
+      // 1. Update scrolled state for navbar styling
       setIsScrolled(window.scrollY > 50);
+
+      // 2. Determine active section based on proximity to top of viewport
+      const sections = ['home', 'about', 'industries', 'contact'];
+      const scrollPosition = window.scrollY + 200; // Offset for better feel
+
+      // If we are basically at the top, force home
+      if (window.scrollY < 100) {
+        setActiveSection('home');
+        return;
+      }
+
+      // Check each section's position
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(sectionId);
+            break; 
+          }
+        }
+      }
     };
+
     window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -54,27 +84,27 @@ export default function Navbar() {
 
         {/* Nav Links - Center floating pill */}
         <div className="hidden md:flex items-center space-x-1">
-          <a href="#home" onClick={scrollToTop} className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.hash === '#home' || location.hash === '' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
+          <a href="#home" onClick={scrollToTop} className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${activeSection === 'home' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
               <span className="relative z-10">Home</span>
-              {(location.hash === '#home' || location.hash === '') && (
+              {activeSection === 'home' && (
                 <motion.div layoutId="nav-pill" className="absolute inset-0 bg-red-600 z-0" transition={{ type: 'spring', duration: 0.6 }} />
               )}
           </a>
-          <a href="#about" className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.hash === '#about' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
+          <a href="#about" className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${activeSection === 'about' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
               <span className="relative z-10">About Us</span>
-              {location.hash === '#about' && (
+              {activeSection === 'about' && (
                 <motion.div layoutId="nav-pill" className="absolute inset-0 bg-red-600 z-0" transition={{ type: 'spring', duration: 0.6 }} />
               )}
           </a>
-          <a href="#industries" className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.hash === '#industries' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
+          <a href="#industries" className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${activeSection === 'industries' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
               <span className="relative z-10">Industries</span>
-              {location.hash === '#industries' && (
+              {activeSection === 'industries' && (
                 <motion.div layoutId="nav-pill" className="absolute inset-0 bg-red-600 z-0" transition={{ type: 'spring', duration: 0.6 }} />
               )}
           </a>
-          <a href="#contact" className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${location.hash === '#contact' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
+          <a href="#contact" className={`px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300 relative group overflow-hidden ${activeSection === 'contact' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-red-600'}`}>
               <span className="relative z-10">Contact Us</span>
-              {location.hash === '#contact' && (
+              {activeSection === 'contact' && (
                 <motion.div layoutId="nav-pill" className="absolute inset-0 bg-red-600 z-0" transition={{ type: 'spring', duration: 0.6 }} />
               )}
           </a>
@@ -134,10 +164,10 @@ export default function Navbar() {
             >
               <div className="flex flex-col space-y-8">
                 {[
-                  { name: 'Home', path: '#home' },
-                  { name: 'About Us', path: '#about' },
-                  { name: 'Industries', path: '#industries' },
-                  { name: 'Contact Us', path: '#contact' }
+                  { name: 'Home', path: '#home', id: 'home' },
+                  { name: 'About Us', path: '#about', id: 'about' },
+                  { name: 'Industries', path: '#industries', id: 'industries' },
+                  { name: 'Contact Us', path: '#contact', id: 'contact' }
                 ].map((item, idx) => (
                   <motion.div 
                     key={item.path}
@@ -147,7 +177,7 @@ export default function Navbar() {
                   >
                     <a 
                       href={item.path} 
-                      className={`text-4xl font-black ${location.hash === item.path ? 'text-red-600' : 'text-slate-900 dark:text-white hover:text-red-600'} transition-colors block`} 
+                      className={`text-4xl font-black ${activeSection === item.id ? 'text-red-600' : 'text-slate-900 dark:text-white hover:text-red-600'} transition-colors block`} 
                       onClick={() => { setIsMobileMenuOpen(false); }}
                     >
                       {item.name}
