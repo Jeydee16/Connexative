@@ -188,20 +188,6 @@ export default function Home() {
                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-60" />
-                                
-                                {/* Experience Badge */}
-                                <motion.div 
-                                    initial={{ scale: 0.8, opacity: 0 }}
-                                    whileInView={{ scale: 1, opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.4 }}
-                                    className="absolute -bottom-6 -right-6 lg:-right-10 bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl border border-slate-100 dark:border-slate-800 z-10 hidden md:block"
-                                >
-                                    <div className="flex flex-col items-center">
-                                        <div className="text-5xl font-black text-red-600 font-display">10+</div>
-                                        <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1 text-center">Years of<br/>Excellence</div>
-                                    </div>
-                                </motion.div>
                             </div>
                         </motion.div>
 
