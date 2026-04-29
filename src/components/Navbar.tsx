@@ -73,12 +73,21 @@ export default function Navbar() {
     <nav className={`fixed w-full z-50 transition-all duration-500 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800 shadow-sm ${isScrolled ? 'py-3' : 'py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         
-        {/* Clickable Logo */}
-        <a href="#home" onClick={scrollToTop} className="flex items-center gap-3 group focus:outline-none">
-          <img src="/logo-removebg-preview.png" alt="Connexative Solutions Inc." className="h-10 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-110" />
-          <div className="flex flex-col ml-1 text-left hidden sm:flex">
-              <span className="font-extrabold text-red-600 leading-none text-2xl tracking-tighter group-hover:tracking-normal transition-all duration-500 italic font-display">CONNEXATIVE</span>
-              <span className="font-bold text-slate-800 dark:text-slate-300 leading-none text-[9px] tracking-[0.3em] mt-1.5 opacity-80 uppercase font-sans">Solutions Inc.</span>
+        <a href="#home" onClick={scrollToTop} className="flex items-center gap-4 group focus:outline-none">
+          <div className="relative flex items-center justify-center">
+            <div className="absolute inset-0 bg-red-600 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform duration-700 opacity-5 blur-xl" />
+            <img src="/logo-removebg-preview.png" alt="CSI Logo" className="w-12 h-12 object-contain relative z-10 transition-all duration-500 transform group-hover:scale-110" />
+          </div>
+          
+          <div className="flex flex-col text-left">
+              <div className="flex items-center">
+                <span className="font-extrabold text-slate-900 dark:text-white leading-none text-2xl tracking-tighter font-display">CONNEX</span>
+                <span className="font-extrabold text-red-600 leading-none text-2xl tracking-tighter font-display">ATIVE</span>
+              </div>
+              <div className="flex items-center gap-2 mt-1">
+                <div className="h-[2px] w-4 bg-red-600/40 rounded-full" />
+                <span className="font-bold text-slate-500 dark:text-slate-400 leading-none text-[8px] tracking-[0.4em] uppercase font-sans">Solutions</span>
+              </div>
           </div>
         </a>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, Mail, ExternalLink, Linkedin } from 'lucide-react';
 
 export default function ContactSection() {
   return (
@@ -44,7 +44,24 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-bold text-xl mb-2 text-slate-900 dark:text-white">Email</h4>
                   <p className="text-slate-600 dark:text-slate-400 font-light text-lg mb-1">connectme@connexative.com</p>
-                  <p className="text-slate-500 font-light">www.connexative.com</p>
+                  <p className="text-slate-500 font-light underline decoration-red-600/30 underline-offset-4">www.connexative.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6 group">
+                <div className="w-16 h-16 bg-white dark:bg-slate-950 shadow-md shadow-slate-200 border border-slate-100 dark:border-slate-800 text-red-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                  <Linkedin strokeWidth={1.5} size={28} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-xl mb-2 text-slate-900 dark:text-white">LinkedIn</h4>
+                  <a 
+                    href="https://www.linkedin.com/company/connexative-solutions/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-600 dark:text-slate-400 font-light text-lg hover:text-red-600 transition-colors"
+                  >
+                    Connexative Solutions
+                  </a>
                 </div>
               </div>
             </div>
@@ -67,11 +84,19 @@ export default function ContactSection() {
               href="mailto:connectme@connexative.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-slate-900 hover:bg-red-600 text-white font-bold py-5 px-10 rounded-2xl w-full transition-all duration-300 shadow-xl shadow-slate-900/20 hover:shadow-red-600/30 flex items-center justify-center gap-3 text-lg"
+              className="bg-slate-900 hover:bg-red-600 text-white font-bold py-5 px-10 rounded-2xl w-full transition-all duration-300 shadow-xl shadow-slate-900/20 hover:shadow-red-600/30 flex items-center justify-center gap-3 text-lg mb-4"
             >
-              Send us an email <ExternalLink size={20} />
+              Get in Touch <Mail size={20} />
             </a>
-            <p className="mt-6 text-slate-500 font-medium">connectme@connexative.com</p>
+            <a 
+              href="https://www.linkedin.com/company/connexative-solutions/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-bold py-4 px-10 rounded-2xl w-full transition-all duration-300 border border-slate-200 dark:border-slate-800 hover:border-blue-600 hover:text-blue-600 flex items-center justify-center gap-3"
+            >
+              Follow on LinkedIn <Linkedin size={20} />
+            </a>
+            <p className="mt-8 text-slate-500 font-medium">connectme@connexative.com</p>
           </motion.div>
 
         </div>

@@ -19,6 +19,20 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.03;
+    z-index: 9999;
+    pointer-events: none;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    mix-blend-mode: overlay;
+  }
+
   ::selection {
     @apply bg-red-600/30 text-red-900 dark:text-red-100;
   }

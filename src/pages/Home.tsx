@@ -1,34 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-    CheckCircle2, ArrowRight, ExternalLink, ShieldCheck, Video, Zap, Droplet, Users, CreditCard, Code2
+    CheckCircle2, ArrowRight, ExternalLink, Shield, Cctv, Zap, Fuel, Fingerprint, Wallet, Cpu, Linkedin, Mail, Sun, Users
 } from 'lucide-react';
 import ContactSection from '../components/ContactSection';
 
-const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2560&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2560&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2560&auto=format&fit=crop",
-];
+const HERO_IMAGE = "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2560&auto=format&fit=crop";
 
 const INDUSTRIES = [
     {
         id: 'military',
-        title: 'Military and Defense Systems',
-        icon: ShieldCheck,
+        title: 'Defense Systems',
+        icon: Shield,
+        image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=2000&auto=format&fit=crop',
         description: 'Advanced technology solutions engineered for national security, defense operations, and tactical command centers.',
         features: [
             'Secure Communication Networks',
             'Tactical Command & Control',
             'Cyber warfare defense systems',
-            'Surveillance & Reconnaissance Integration'
+            'Surveillance & Reconnaissance'
         ],
         gradient: 'from-orange-500 to-red-600'
     },
     {
         id: 'security-telecom',
-        title: 'Security Systems & Telecom Equipments',
-        icon: Video,
+        title: 'Security & Telecom',
+        icon: Cctv,
+        image: 'https://images.unsplash.com/photo-1557597774-9d2739f85a76?q=80&w=2000&auto=format&fit=crop',
         description: 'Next-generation surveillance and telecommunication infrastructure for enterprise and civil applications.',
         features: [
             'CCTV & Video Analytics',
@@ -40,8 +38,9 @@ const INDUSTRIES = [
     },
     {
         id: 'pos-payment',
-        title: 'POS & Payment Gateways Systems',
-        icon: CreditCard,
+        title: 'Payment Gateways',
+        icon: Wallet,
+        image: 'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=2000&auto=format&fit=crop',
         description: 'Secure and efficient payment processing solutions for modern retail and digital commerce.',
         features: [
             'Point of Sale Integration',
@@ -53,9 +52,10 @@ const INDUSTRIES = [
     },
     {
         id: 'hris',
-        title: 'HRIS System',
-        icon: Users,
-        description: 'Comprehensive Human Resource Information Systems to streamline workforce management and administrative processes.',
+        title: 'HRIS Solutions',
+        icon: Fingerprint,
+        image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2000&auto=format&fit=crop',
+        description: 'Comprehensive Human Resource Information Systems to streamline workforce management.',
         features: [
             'Employee Data Management',
             'Payroll & Benefits Integration',
@@ -66,40 +66,43 @@ const INDUSTRIES = [
     },
     {
         id: 'software-dev',
-        title: 'Applications & Software Development',
-        icon: Code2,
-        description: 'Custom software solutions designed to solve complex business problems and drive digital transformation.',
+        title: 'Software Systems',
+        icon: Cpu,
+        image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2000&auto=format&fit=crop',
+        description: 'Custom software solutions designed to solve complex business problems and drive transformation.',
         features: [
             'Custom Web Applications',
             'Mobile App Development',
-            'Enterprise Software Solutions',
-            'API Integration & Development'
+            'Enterprise Software',
+            'API Integration'
         ],
         gradient: 'from-cyan-500 to-blue-600'
     },
     {
         id: 'petroleum',
-        title: 'Oil & Lubricants and other Petroleum products',
-        icon: Droplet,
+        title: 'Energy & Petroleum',
+        icon: Fuel,
+        image: 'https://images.unsplash.com/photo-1518152006812-edab29b069ac?q=80&w=2000&auto=format&fit=crop',
         description: 'Comprehensive IT & operational systems tailored for the oil, gas, and petroleum industry.',
         features: [
-            'Refinery Automation Systems',
+            'Refinery Automation',
             'Supply Chain Tracking',
-            'Safety & Compliance Monitoring',
-            'Petroleum Product Logistics'
+            'Safety Monitoring',
+            'Logistics Management'
         ],
         gradient: 'from-amber-500 to-orange-600'
     },
     {
         id: 'renewable-energy',
-        title: 'Alternative & Renewable Energy Technologies',
-        icon: Zap,
+        title: 'Renewable Tech',
+        icon: Sun,
+        image: 'https://images.unsplash.com/photo-1466611653911-95282fc3656b?q=80&w=2000&auto=format&fit=crop',
         description: 'Sustainable energy solutions harnessing alternative sources to power modern operations.',
         features: [
-            'Solar & Wind Power Systems',
+            'Solar & Wind Systems',
             'Energy Storage Solutions',
             'Smart Grid Management',
-            'Green Technology Integration'
+            'Green Tech Integration'
         ],
         gradient: 'from-lime-400 to-emerald-600'
     }
@@ -116,33 +119,18 @@ const itemVariants = {
 };
 
 export default function Home() {
-    const [heroIndex, setHeroIndex] = useState(0);
     const [expandedId, setExpandedId] = useState<string | null>(null);
-
-    // Hero Slideshow
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setHeroIndex((prev) => (prev + 1) % HERO_IMAGES.length);
-        }, 6000); 
-        return () => clearInterval(timer);
-    }, []);
 
 
     return (
         <div className="relative">
             {/* Hero Section */}
             <section id="home" className="relative h-screen min-h-[700px] flex items-center overflow-hidden bg-slate-950">
-                <AnimatePresence mode="popLayout">
-                    <motion.img
-                        key={heroIndex}
-                        src={HERO_IMAGES[heroIndex]}
-                        initial={{ opacity: 0, scale: 1.1 }}
-                        animate={{ opacity: 0.5, scale: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 1.8, ease: "easeInOut" }}
-                        className="absolute inset-0 w-full h-full object-cover"
-                    />
-                </AnimatePresence>
+                <img
+                    src={HERO_IMAGE}
+                    alt="Connexative Solutions Background"
+                    className="absolute inset-0 w-full h-full object-cover opacity-50"
+                />
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/70 to-transparent z-0" />
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent z-10" />
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
@@ -171,7 +159,11 @@ export default function Home() {
 
             {/* About Section */}
             <section id="about" className="py-24 md:py-32 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Decorative mesh background */}
+                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-red-600/[0.02] dark:bg-red-600/[0.04] rounded-full blur-[120px] -mr-40 -mt-40 z-0" />
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-600/[0.02] dark:bg-blue-600/[0.03] rounded-full blur-[100px] -ml-20 -mb-20 z-0" />
+                
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     {/* Main Content Grid */}
                     <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center mb-20">
                         <motion.div 
@@ -181,14 +173,39 @@ export default function Home() {
                             transition={{ duration: 0.8 }}
                             className="relative order-2 lg:order-1"
                         >
-                            <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl group">
+                            <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl group z-10">
                                 <img 
-                                    src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2080&auto=format&fit=crop" 
-                                    alt="CSI Datacenter" 
+                                    src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop" 
+                                    alt="CSI Emerging Technology" 
                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-60" />
                             </div>
+                            
+                            {/* Decorative Elements */}
+                            <div className="absolute -top-6 -left-6 w-32 h-32 bg-red-600/10 rounded-full blur-3xl animate-pulse" />
+                            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-red-600/5 rounded-full blur-[100px]" />
+                            <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-red-600 z-0 opacity-50" />
+                            <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-red-600 z-0 opacity-50" />
+                            
+                            {/* Stats Badge */}
+                            <motion.div 
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.5 }}
+                                className="absolute -right-6 top-1/4 bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-xl z-20 hidden md:block border border-slate-100 dark:border-slate-800"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center text-red-600">
+                                        <Shield size={24} />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">Trusted by</p>
+                                        <p className="text-xl font-bold text-slate-900 dark:text-white">Industry Leaders</p>
+                                    </div>
+                                </div>
+                            </motion.div>
                         </motion.div>
 
                         <motion.div 
@@ -206,13 +223,13 @@ export default function Home() {
                                 Empowering Business through <span className="text-red-600">Emerging Technologies</span>.
                             </h2>
                             <div className="space-y-6 mb-10">
-                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light">
+                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light text-justify">
                                     <span className="font-bold text-slate-900 dark:text-white border-b-2 border-red-600/20 pb-0.5">Connexative Solutions Inc. (CSI)</span> was incorporated to provide business solutions thru emerging technologies available to support its clientele. Our mission is to be the market leader in "emerging technologies", at every endeavor we take together with our clients.
                                 </p>
-                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light">
+                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light text-justify">
                                     We ensure that our customers are supplied with most cost-effective products and are supported by the company's partners. A dynamic company not only to engage in business solutions, consultancy and integration but also to the marketing of its diverse pool of products as a Technology Provider.
                                 </p>
-                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light">
+                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light text-justify">
                                     Our manpower, composed of talented and dynamic people, are masters in their own fields. We aim to satisfy our client as being a one-stop-shop; to analyze the needs of the market and offer optimum solutions.
                                 </p>
                             </div>
@@ -231,32 +248,45 @@ export default function Home() {
                     </div>
 
                     {/* Features Grid - "At your disposal" */}
-                    <div className="pt-20 border-t border-slate-200 dark:border-slate-800">
+                    <div className="pt-20 relative isolate">
+                        {/* Decorative floating shapes */}
+                        <div className="absolute top-1/2 left-0 w-64 h-64 bg-red-600/5 rounded-full blur-[100px] -z-10 animate-pulse" />
+                        <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-600/5 rounded-full blur-[120px] -z-10" />
+
                         <div className="text-center mb-16">
-                            <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 font-display">At your disposal...</h3>
-                            <div className="w-20 h-1 bg-red-600 mx-auto rounded-full"></div>
+                            <h3 className="text-4xl font-black text-slate-900 dark:text-white mb-6 font-display tracking-tight">At your disposal...</h3>
+                            <div className="flex items-center justify-center gap-2">
+                                <div className="w-12 h-1.5 bg-red-600 rounded-full"></div>
+                                <div className="w-3 h-1.5 bg-red-600/30 rounded-full"></div>
+                                <div className="w-1.5 h-1.5 bg-red-600/20 rounded-full"></div>
+                            </div>
                         </div>
+
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                             {[
                                 {
                                     title: "End-to-End Systems",
                                     desc: "From I.T. systems and payment gateways to military, security, and environmental technologies.",
-                                    icon: ShieldCheck
+                                    icon: Shield,
+                                    bg: "hover:bg-red-50/50 dark:hover:bg-red-900/5"
                                 },
                                 {
                                     title: "Global Partnerships",
                                     desc: "Supplying only best-in-class industry-standard products and cost-effective solutions.",
-                                    icon: ExternalLink
+                                    icon: ExternalLink,
+                                    bg: "hover:bg-blue-50/50 dark:hover:bg-blue-900/5"
                                 },
                                 {
                                     title: "Client-Centric Value",
                                     desc: "We value clients as partners, living by the concept \"what you need, is what you get.\"",
-                                    icon: Users
+                                    icon: Users,
+                                    bg: "hover:bg-purple-50/50 dark:hover:bg-purple-900/5"
                                 },
                                 {
                                     title: "Execution Excellence",
                                     desc: "A singular focus on results and functionality—simply because we want to make things work!",
-                                    icon: Zap
+                                    icon: Zap,
+                                    bg: "hover:bg-amber-50/50 dark:hover:bg-amber-900/5"
                                 }
                             ].map((item, idx) => (
                                 <motion.div 
@@ -264,14 +294,20 @@ export default function Home() {
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1, duration: 0.6 }}
-                                    className="bg-white dark:bg-slate-950 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl hover:shadow-2xl transition-all duration-300 group"
+                                    transition={{ delay: idx * 0.1, duration: 0.8 }}
+                                    className={`bg-white dark:bg-slate-950/50 backdrop-blur-sm p-10 rounded-[2.5rem] border border-slate-100 dark:border-slate-800/50 shadow-xl hover:shadow-2xl transition-all duration-500 group relative overflow-hidden ${item.bg}`}
                                 >
-                                    <div className="w-14 h-14 bg-red-50 dark:bg-red-900/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-600 transition-colors duration-500">
-                                        <item.icon size={28} className="text-red-600 group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-current to-transparent opacity-[0.02] -mr-16 -mt-16 rounded-full" />
+                                    
+                                    <div className="w-16 h-16 bg-slate-50 dark:bg-slate-900 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-red-600 transition-all duration-500 shadow-inner group-hover:scale-110 group-hover:rotate-6">
+                                        <item.icon size={32} className="text-red-600 group-hover:text-white transition-colors duration-500" strokeWidth={1} />
                                     </div>
-                                    <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-4 font-display">{item.title}</h4>
-                                    <p className="text-slate-600 dark:text-slate-400 font-light leading-relaxed text-sm">{item.desc}</p>
+                                    <h4 className="text-2xl font-black text-slate-900 dark:text-white mb-4 font-display tracking-tight leading-tight group-hover:text-red-600 transition-colors duration-500">
+                                        {item.title}
+                                    </h4>
+                                    <p className="text-slate-600 dark:text-slate-400 font-light leading-relaxed text-sm group-hover:text-slate-900 dark:group-hover:text-slate-300 transition-colors duration-500">
+                                        {item.desc}
+                                    </p>
                                 </motion.div>
                             ))}
                         </div>
@@ -306,17 +342,17 @@ export default function Home() {
                         ))}
                     </div>
                 </div>
-            </section>
-
-            {/* Strategic Industries Section */}
-            <section id="industries" className="py-24 bg-slate-50 dark:bg-slate-900 relative isolate">
-                <div className="absolute inset-0 bg-slate-950 -z-10 h-[500px]">
+            </section>            {/* Strategic Industries Section */}
+            <section id="industries" className="py-24 bg-slate-950 relative isolate overflow-hidden">
+                {/* Immersive Section Background Photo Overlay */}
+                <div className="absolute inset-0 z-0 pointer-events-none transition-opacity duration-1000">
                     <img 
-                        src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" 
-                        alt="Industrial Technology" 
-                        className="w-full h-full object-cover opacity-20 mix-blend-overlay"
+                        src="https://images.unsplash.com/photo-1518152006812-edab29b069ac?q=80&w=2070&auto=format&fit=crop" 
+                        alt="Core Infrastructure" 
+                        className="w-full h-full object-cover opacity-25 grayscale hover:grayscale-0 transition-all duration-1000 brightness-[0.3] mix-blend-luminosity"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/60 to-slate-950"></div>
+                    <div className="absolute inset-0 bg-slate-900/40 mix-blend-multiply"></div>
                 </div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center mb-16">
@@ -326,80 +362,138 @@ export default function Home() {
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8">
-                            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                            <span className="text-white text-sm font-bold tracking-wide uppercase font-sans">Core Operations</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-600/10 border border-red-600/20 mb-6 backdrop-blur-md">
+                            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                            <span className="text-red-500 text-[10px] font-black tracking-[0.3em] uppercase">Core Operations</span>
                         </div>
-                        <h2 className="text-5xl md:text-7xl font-extrabold text-white mb-6 font-display tracking-tight uppercase">
-                            <span className="text-red-600">Strategic</span> Industries
+                        <h2 className="text-5xl md:text-7xl font-black text-white mb-6 font-display tracking-tight uppercase leading-[0.9]">
+                            Strategic <span className="text-red-600">Industries</span>
                         </h2>
-                        <p className="text-xl text-slate-300 font-light max-w-3xl mx-auto leading-relaxed">
-                            Empowering critical sectors with enterprise-grade infrastructure, secure communication, and automated systems. Click on any sector to explore our specialized solutions.
+                        <div className="h-1.5 w-20 bg-red-600 mx-auto mb-8 rounded-full shadow-lg shadow-red-600/20" />
+                        <p className="text-lg md:text-xl text-slate-400 font-light max-w-2xl mx-auto leading-relaxed">
+                            Pioneering enterprise solutions across critical sectors with a focus on reliability, security, and next-gen integration.
                         </p>
                     </motion.div>
                 </div>
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid md:grid-cols-2 gap-8 items-start">
+                <div className="max-w-[1500px] mx-auto px-4 md:px-10 relative z-10">
+                    {/* Fixed Height Flex Container to Maintain Shape During Expansion */}
+                    <div className="flex flex-col lg:flex-row gap-5 h-auto lg:h-[600px] items-stretch">
                         {INDUSTRIES.map((ind, idx) => {
                             const isExpanded = expandedId === ind.id;
+                            const Icon = ind.icon;
                             return (
-                                <motion.div 
+                                <motion.div
                                     key={ind.id}
                                     layout
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                    transition={{ 
+                                        duration: 0.6, 
+                                        delay: idx * 0.05,
+                                        layout: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+                                    }}
                                     viewport={{ once: true }}
                                     onClick={() => setExpandedId(isExpanded ? null : ind.id)}
-                                    className={`bg-white dark:bg-slate-950 rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative border border-slate-100 dark:border-slate-800 overflow-hidden group cursor-pointer transition-all duration-300 ${isExpanded ? 'ring-2 ring-red-600/20' : 'hover:border-red-600/20'}`}
+                                    className={`relative rounded-[2.5rem] overflow-hidden cursor-pointer group flex-grow transition-all duration-700 bg-white border border-transparent min-h-[140px] ${
+                                        isExpanded 
+                                        ? 'lg:flex-[6] shadow-2xl shadow-black/80' 
+                                        : 'lg:flex-1 hover:border-red-600/20 shadow-sm'
+                                    }`}
                                 >
-                                    <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${ind.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-500 rounded-full blur-3xl -mr-20 -mt-20`}></div>
-                                    
-                                    <div className="flex items-center gap-6 relative z-10">
-                                        <div className={`w-20 h-20 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-sm ${isExpanded ? 'bg-red-50 dark:bg-red-900/10 border-red-100 dark:border-red-900/20' : ''}`}>
-                                            <ind.icon size={36} className={isExpanded ? 'text-red-600' : 'text-slate-400 group-hover:text-red-600 transition-colors'} strokeWidth={1.5} />
-                                        </div>
-                                        <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight group-hover:text-red-600 transition-colors">
-                                            {ind.title}
-                                        </h3>
-                                    </div>
+                                    {/* Collapsed State - Minimal White Icon Card */}
+                                    {!isExpanded && (
+                                        <div className="h-full w-full flex flex-col items-center justify-center p-6 text-center">
+                                            {/* Advanced Icon Container */}
+                                            <div className="relative group/icon mb-8">
+                                                {/* Ambient Glow */}
+                                                <div className="absolute inset-0 bg-red-600/20 blur-xl rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                                
+                                                {/* Main Container */}
+                                                <div className="relative w-16 h-16 rounded-2xl bg-white flex items-center justify-center group-hover:bg-red-600 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-red-600/40 transition-all duration-500 border border-slate-100 group-hover:border-red-500 overflow-hidden">
+                                                    {/* Decorative corner accent */}
+                                                    <div className="absolute top-0 right-0 w-4 h-4 bg-red-600/10 group-hover:bg-white/20 -mr-2 -mt-2 rotate-45" />
+                                                    
+                                                    <Icon size={26} className="text-red-600 group-hover:text-white transition-colors duration-500 relative z-10" strokeWidth={1.5} />
+                                                    
+                                                    {/* Glassy Overlay */}
+                                                    <div className="absolute inset-x-0 top-0 h-[30%] bg-gradient-to-b from-white/20 to-transparent pointer-events-none group-hover:hidden" />
+                                                </div>
+                                            </div>
+                                            
+                                            <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-[0.25em] leading-tight px-2 max-w-[100px] group-hover:text-red-600 transition-colors duration-500">
+                                                {ind.title}
+                                            </h3>
 
+                                            <div className="mt-8 w-8 h-8 rounded-full border border-slate-100 flex items-center justify-center text-red-600 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-sm bg-white">
+                                                <ArrowRight size={14} />
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Expanded Content - Professional Industrial Profile */}
                                     <AnimatePresence>
                                         {isExpanded && (
                                             <motion.div
-                                                initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                                                animate={{ height: 'auto', opacity: 1, marginTop: 32 }}
-                                                exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                                                transition={{ duration: 0.4, ease: "circOut" }}
-                                                className="overflow-hidden relative z-10"
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                className="relative h-full w-full p-8 lg:p-16 flex flex-col justify-center z-20 overflow-hidden"
                                             >
-                                                <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg font-light leading-relaxed">
-                                                    {ind.description}
-                                                </p>
-                                                
-                                                <div className="grid sm:grid-cols-2 gap-4">
-                                                    {ind.features.map((feature, fIdx) => (
-                                                        <motion.div 
-                                                            key={fIdx}
-                                                            initial={{ x: -10, opacity: 0 }}
-                                                            animate={{ x: 0, opacity: 1 }}
-                                                            transition={{ delay: 0.2 + (fIdx * 0.05) }}
-                                                            className="flex items-center gap-3"
-                                                        >
-                                                            <CheckCircle2 size={18} className="text-red-600 shrink-0" />
-                                                            <span className="text-slate-700 dark:text-slate-300 text-sm font-medium">{feature}</span>
-                                                        </motion.div>
-                                                    ))}
+                                                <div className="max-w-4xl">
+                                                    <div className="flex items-center gap-6 md:gap-10 mb-8 md:mb-12">
+                                                        {/* Expanded Icon Container */}
+                                                        <div className="relative shrink-0">
+                                                            {/* Background Decorative Rings */}
+                                                            <div className="absolute inset-0 bg-red-600/20 blur-3xl animate-pulse" />
+                                                            <div className="absolute -inset-4 border border-red-600/10 rounded-3xl animate-[spin_10s_linear_infinite]" />
+                                                            
+                                                            <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-3xl bg-gradient-to-br from-red-600 to-red-700 text-white flex items-center justify-center shadow-2xl shadow-red-600/40 border border-red-500/50">
+                                                                <Icon size={44} className="md:size-14" strokeWidth={1.5} />
+                                                                
+                                                                {/* Glass Reflection */}
+                                                                <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent rounded-t-3xl" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <h3 className="text-3xl md:text-5xl lg:text-7xl font-black text-slate-900 font-display tracking-tight uppercase leading-none">
+                                                                {ind.title}
+                                                            </h3>
+                                                            <div className="h-1.5 md:h-2 w-20 md:w-32 bg-red-600 mt-3 md:mt-4 rounded-full shadow-[0_4px_12px_rgba(220,38,38,0.3)]" />
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div className="flex flex-col xl:flex-row gap-8 lg:gap-16 items-start">
+                                                        <div className="flex-1">
+                                                            <p className="text-slate-600 mb-8 md:mb-10 text-base md:text-xl font-light leading-relaxed max-w-xl">
+                                                                {ind.description}
+                                                            </p>
+                                                            <div className="flex flex-wrap gap-4">
+                                                                <a 
+                                                                    href="#contact"
+                                                                    className="px-8 md:px-10 py-4 md:py-5 bg-slate-950 text-white rounded-2xl font-bold uppercase tracking-widest text-[9px] md:text-[10px] hover:bg-red-600 transition-all transform hover:translate-y-[-2px] shadow-xl inline-block"
+                                                                >
+                                                                    Connect with Experts
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex-1 grid gap-3 md:gap-4 place-content-start w-full">
+                                                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-1 text-left">Key Competencies</p>
+                                                            {ind.features.map((feature, fIdx) => (
+                                                                <div key={fIdx} className="flex items-center gap-3 md:gap-4 py-3 md:py-4 px-5 md:px-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-red-200 transition-colors">
+                                                                    <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+                                                                        <CheckCircle2 size={14} className="text-red-600" />
+                                                                    </div>
+                                                                    <span className="text-slate-900 text-[10px] md:text-xs font-black uppercase tracking-wider">{feature}</span>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
-
-                                    <div className="mt-8 flex items-center gap-2 text-red-600 font-bold text-xs uppercase tracking-[0.2em] relative z-10 opacity-60 group-hover:opacity-100 transition-opacity">
-                                        {isExpanded ? 'View Less' : 'Click for Details'}
-                                        <ArrowRight size={16} className={`transform transition-transform duration-500 ${isExpanded ? '-rotate-90' : 'group-hover:translate-x-1'}`} />
-                                    </div>
                                 </motion.div>
                             );
                         })}
